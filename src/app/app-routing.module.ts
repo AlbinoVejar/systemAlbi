@@ -3,15 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './views/sign-up/sign-up.component';
 
 const routes: Routes = [
-  {
-    path: '/', pathMatch: 'full', children: [
-      { path: 'signUp', pathMatch: 'full', component: SignUpComponent },
-    ]
-  },
+  { path: '', loadChildren: () => import('./views/views-routing.module').then(m => m.ViewsRoutingModule) },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
