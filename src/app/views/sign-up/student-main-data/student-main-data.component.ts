@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-student-main-data',
@@ -10,34 +10,41 @@ export class StudentMainDataComponent implements OnInit {
 
   constructor() { }
   fromStudent = new FormGroup({
-    yearSchool: new FormControl(''),
-    campus: new FormControl(''),
-    section: new FormControl(''),
-    grade: new FormControl(''),
+    yearSchool: new FormControl('',[Validators.required]),
+    campus: new FormControl('',[Validators.required]),
+    section: new FormControl('',[Validators.required]),
+    grade: new FormControl('',[Validators.required]),
     studentData: new FormGroup({
-      lastFirstName: new FormControl(''),
-      lastSecondName: new FormControl(''),
-      names: new FormControl(''),
-      sex: new FormControl(''),
+      lastFirstName: new FormControl('',[Validators.required]),
+      lastSecondName: new FormControl('',[Validators.required]),
+      names: new FormControl('',[Validators.required]),
+      sex: new FormControl('',[Validators.required]),
       bornDate: new FormGroup({
-        day: new FormControl(''),
-        month: new FormControl(''),
-        year: new FormControl(''),
+        day: new FormControl('',[Validators.required]),
+        month: new FormControl('',[Validators.required]),
+        year: new FormControl('',[Validators.required]),
       }),
-      bornPlace: new FormControl(''),
-      address: new FormControl(''),
-      col: new FormControl(''),
-      postalCode: new FormControl(''),
-      phone: new FormControl(''),
-      curp: new FormControl(''),
-      height: new FormControl(''),
-      weight: new FormControl(''),
-      bloodType: new FormControl(''),
-      glasses: new FormControl(''),
-      alergic: new FormControl(''),
+      bornPlace: new FormControl('',[Validators.required]),
+      address: new FormControl('',[Validators.required]),
+      col: new FormControl('',[Validators.required]),
+      postalCode: new FormControl('',[Validators.required]),
+      phone: new FormControl('',[Validators.required]),
+      curp: new FormControl('',[Validators.required]),
+      height: new FormControl('',[Validators.required]),
+      weight: new FormControl('',[Validators.required]),
+      bloodType: new FormControl('',[Validators.required]),
+      glasses: new FormControl('',[Validators.required]),
+      alergic: new FormControl('',[Validators.required]),
     })
   });
   ngOnInit() {
   }
 
+  public next(): void{
+    if(this.fromStudent.valid){
+
+    }else{
+      this.fromStudent.markAllAsTouched();
+    }
+  }
 }

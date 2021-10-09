@@ -3,7 +3,7 @@
     <div class="column pb-0">
       <mat-form-field>
         <mat-label>Seleccione Ciclo Escolar</mat-label>
-        <mat-select formGroupName="yearSchool">
+        <mat-select formControlName="yearSchool">
           <mat-option value="2020-2021">2020-2021</mat-option>
           <mat-option value="2021-2022">2021-2022</mat-option>
         </mat-select>
@@ -187,6 +187,11 @@
             <mat-option value="Sí">Sí</mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column py-0 is-flex is-justify-content-end">
+        <button mat-flat-button matStepperNext color="primary" (click)="next()">Siguiente</button>
       </div>
     </div>
   </div>
