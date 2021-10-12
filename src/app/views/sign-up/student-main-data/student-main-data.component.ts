@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./student-main-data.component.scss']
 })
 export class StudentMainDataComponent implements OnInit {
-
+  @Output() setFormGroup = new EventEmitter<FormGroup>();
   constructor() { }
   fromStudent = new FormGroup({
     yearSchool: new FormControl('',[Validators.required]),

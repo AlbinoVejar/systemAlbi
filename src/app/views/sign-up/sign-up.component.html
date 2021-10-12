@@ -9,19 +9,19 @@
         <div class="columns">
           <div class="column is-full">
             <mat-stepper orientation="horizontal" [linear]="true">
-              <mat-step step="mainData" label="Datos Escolares" [stepControl]="studentForm">
-                <app-student-main-data></app-student-main-data>
+              <mat-step step="mainData" label="Datos Escolares">
+                <app-student-main-data (setFormGroup)="getFormStudentData($event)"></app-student-main-data>
               </mat-step>
-              <mat-step step="ailmentsData" [editable]="studentForm.valid" label="Padecimientos" [stepControl]="ailmentsForm">
+              <mat-step step="ailmentsData" label="Padecimientos">
                 <app-student-ailments></app-student-ailments>
               </mat-step>
-              <mat-step step="emergencyData" [editable]="ailmentsForm.valid" label="Datos de Emergencia" [stepControl]="emergencyForm">
+              <mat-step step="emergencyData" label="Datos de Emergencia">
                 <app-student-emergency-data></app-student-emergency-data>
               </mat-step>
-              <mat-step step="billingData" [editable]="emergencyForm.valid" label="Datos de Facturación" [stepControl]="billingForm">
+              <mat-step step="billingData" label="Datos de Facturación">
                 <app-student-billing-data></app-student-billing-data>
               </mat-step>
-              <mat-step step="cardData" [editable]="billingForm.valid" label="Datos de Carnet" [stepControl]="cardForm">
+              <mat-step step="cardData" label="Datos de Carnet">
                 <app-student-card-data></app-student-card-data>
               </mat-step>
               <ng-template matStepperIcon="home">
