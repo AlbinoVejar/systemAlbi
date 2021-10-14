@@ -1,12 +1,14 @@
-class Ubication {
-  constructor(city: string, address: string, cp: string, phone: string) {
-    this.ciudad = city;
+export class Ubication {
+  constructor(bornPlace: string, address: string,col: string, postalCode: string, phone: string) {
+    this.ciudad = bornPlace;
     this.direccion = address;
-    this.codigoPostal = cp;
+    this.colonia = col;
+    this.codigoPostal = postalCode;
     this.telefono = phone;
   }
   ciudad: string;
   direccion: string;
+  colonia: string;
   codigoPostal: string;
   telefono: string;
 }
