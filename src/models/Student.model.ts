@@ -1,8 +1,10 @@
 import { Ubication } from './Ubication.model';
 import * as moment from 'moment';
+import { School } from './School.model';
 
 export class Student {
   constructor(
+    schoolData: School,
     lastFirstName: string,
     lastSecondName: string,
     names: string,
@@ -14,8 +16,11 @@ export class Student {
     weight: string,
     bloodType: string,
     glasses: boolean,
-    alergic: boolean
+    alergic: boolean,
+    id?: string
   ) {
+    this.id = id;
+    this.escuela = schoolData;
     this.apellidoMaterno = lastFirstName;
     this.apellidoPaterno = lastSecondName;
     this.nombres = names;
@@ -29,6 +34,8 @@ export class Student {
     this.usoLentes = glasses;
     this.alergico = alergic;
   }
+  id?: string;
+  escuela: School;
   apellidoMaterno: string;
   apellidoPaterno: string;
   nombres: string;
