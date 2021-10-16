@@ -3,6 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  firebase: {
+    projectId: 'systemalbi-40516',
+    appId: '1:661215709192:web:33367f2dc9344c627e69bd',
+    storageBucket: 'systemalbi-40516.appspot.com',
+    locationId: 'us-east1',
+    apiKey: 'AIzaSyDdsu91pucnzy-QSNvjmJeB3qz3KAvj8Z0',
+    authDomain: 'systemalbi-40516.firebaseapp.com',
+    messagingSenderId: '661215709192',
+  },
   production: false
 };
 
