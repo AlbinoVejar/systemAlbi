@@ -8,8 +8,8 @@
       <div class="container-fluid">
         <div class="columns">
           <div class="column is-full">
-            <mat-stepper orientation="horizontal" [linear]="true">
-              <mat-step step="mainData" label="Datos Escolares">
+            <mat-stepper  orientation="horizontal" [linear]="true">
+              <mat-step step="mainData" [stepControl]="studentForm" label="Datos Escolares">
                 <app-student-main-data (setFormGroup)="getFormStudentData($event)"></app-student-main-data>
               </mat-step>
               <mat-step step="ailmentsData" label="Padecimientos">
