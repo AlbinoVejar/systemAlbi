@@ -106,40 +106,44 @@
         </mat-card>
       </div>
     </div>
-    <div class="columns">
-      <div class="column py-0">
-        <mat-form-field>
-          <mat-label>Lugar de Nacimiento</mat-label>
-          <input matInput formControlName="bornPlace">
-        </mat-form-field>
+    <div formGroupName="ubication">
+      <div class="columns">
+        <div class="column py-0">
+          <mat-form-field>
+            <mat-label>Lugar de Nacimiento</mat-label>
+            <input matInput formControlName="bornPlace">
+          </mat-form-field>
+        </div>
+        <div class="column py-0">
+          <mat-form-field>
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="address">
+          </mat-form-field>
+        </div>
       </div>
-      <div class="column py-0">
-        <mat-form-field>
-          <mat-label>Dirección</mat-label>
-          <input matInput formControlName="address">
-        </mat-form-field>
-      </div>
-      <div class="column py-0">
-        <mat-form-field>
-          <mat-label>Colonia</mat-label>
-          <input matInput formControlName="col">
-        </mat-form-field>
-      </div>
-      <div class="column py-0">
-        <mat-form-field>
-          <mat-label>Código Postal</mat-label>
-          <input matInput formControlName="postalCode">
-        </mat-form-field>
+      <div class="columns">
+        <div class="column py-0">
+          <mat-form-field>
+            <mat-label>Colonia</mat-label>
+            <input matInput formControlName="col">
+          </mat-form-field>
+        </div>
+        <div class="column py-0">
+          <mat-form-field>
+            <mat-label>Código Postal</mat-label>
+            <input matInput formControlName="postalCode">
+          </mat-form-field>
+        </div>
+        <div class="column py-0">
+          <mat-form-field>
+            <mat-label>Telefono</mat-label>
+            <input matInput formControlName="phone">
+          </mat-form-field>
+        </div>
       </div>
     </div>
     <div class="columns">
-      <div class="column py-0">
-        <mat-form-field>
-          <mat-label>Telefono</mat-label>
-          <input matInput formControlName="phone">
-        </mat-form-field>
-      </div>
-      <div class="column py-0">
+      <div class="column is-half py-0">
         <mat-form-field>
           <mat-label>CURP</mat-label>
           <input matInput formControlName="curp">

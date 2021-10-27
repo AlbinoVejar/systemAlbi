@@ -1,8 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { School } from 'src/models/School.model';
-import { Student } from 'src/models/Student.model';
-import { Ubication } from 'src/models/Ubication.model';
 import { FirebaseService } from 'src/services/firebase.service';
 
 @Component({
@@ -12,7 +9,9 @@ import { FirebaseService } from 'src/services/firebase.service';
 })
 export class StudentMainDataComponent implements OnInit {
   @Output() setFormGroup = new EventEmitter<FormGroup>();
-  constructor(private serviceFirebase: FirebaseService) {}
+  constructor(
+    private serviceFirebase: FirebaseService,
+  ) {}
   fromStudent = new FormGroup({
     yearSchool: new FormControl('', [Validators.required]),
     campus: new FormControl('', [Validators.required]),
@@ -48,24 +47,11 @@ export class StudentMainDataComponent implements OnInit {
     // this.next();
   }
 
-  public async next() {
-    const result = await this.serviceFirebase.storeStudent(
-      new Student(
-        new School('primaria','hermosillo','5','A'),
-        'Vejar',
-        'Lopez',
-        'Albino Daniel',
-        'Masculino',
-        '1996-07-16',
-        new Ubication('Hermosillo', 'Lazaro', 'Sahuaro', '83170', '6623867266'),
-        'etc',
-        '169',
-        '60',
-        'O+',
-        true,
-        false
-      )
-    );
-    console.log(result);
+  public next() {
+    if(this.fromStudent.valid){
+      this.setFormGroup.emit(this.fromStudent);
+    }else{
+      this.fromStudent.markAllAsTouched();
+    }
   }
 }
