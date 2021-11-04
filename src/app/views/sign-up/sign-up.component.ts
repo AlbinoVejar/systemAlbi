@@ -25,11 +25,16 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getFormStudentData(data: boolean, stepper: MatStepper){
+  getFormStudentData(data: FormGroup, stepper: MatStepper){
     if(data){
       stepper.next();
     }
-    console.log(data);
+  }
+
+  getFormAilmentsData(data: FormGroup, stepper: MatStepper){
+    if(data){
+      stepper.next();
+    }
   }
 
   private async postStudent(data: any){
