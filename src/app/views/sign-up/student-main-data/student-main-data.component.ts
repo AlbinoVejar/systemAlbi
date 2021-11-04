@@ -8,7 +8,7 @@ import { FirebaseService } from 'src/services/firebase.service';
   styleUrls: ['./student-main-data.component.scss'],
 })
 export class StudentMainDataComponent implements OnInit {
-  @Output() setFormGroup = new EventEmitter<boolean>();
+  @Output() setStudentGroup = new EventEmitter<FormGroup>();
   constructor(
     private serviceFirebase: FirebaseService,
   ) {}
@@ -43,13 +43,13 @@ export class StudentMainDataComponent implements OnInit {
     }),
   });
   ngOnInit() {
-    this.serviceFirebase.getAllStudents(true);
+    // this.serviceFirebase.getAllStudents(true);
     // this.next();
   }
 
   public next() {
     if(this.fromStudent.valid){
-      this.setFormGroup.emit(true);
+      this.setStudentGroup.emit(this.fromStudent);
     }else{
       this.fromStudent.markAllAsTouched();
     }
