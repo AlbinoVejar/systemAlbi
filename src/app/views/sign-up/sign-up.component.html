@@ -8,21 +8,21 @@
       <div class="container-fluid">
         <div class="columns">
           <div class="column is-full">
-            <mat-stepper  orientation="horizontal" [linear]="true">
-              <mat-step step="mainData" [stepControl]="studentForm" label="Datos Escolares">
-                <app-student-main-data (setFormGroup)="getFormStudentData($event)"></app-student-main-data>
+            <mat-stepper orientation="horizontal" linear #stepper>
+              <mat-step step="mainData" label="Datos Escolares">
+                <app-student-main-data (setStudentGroup)="getFormStudentData($event, stepper)"></app-student-main-data>
               </mat-step>
               <mat-step step="ailmentsData" label="Padecimientos">
-                <app-student-ailments></app-student-ailments>
+                <app-student-ailments (setAilmentsGroup)="getFormAilmentsData($event, stepper)"></app-student-ailments>
               </mat-step>
               <mat-step step="emergencyData" label="Datos de Emergencia">
-                <app-student-emergency-data></app-student-emergency-data>
+                <app-student-emergency-data (setEmergencyGroup)="getFormEmergencyData($event, stepper)"></app-student-emergency-data>
               </mat-step>
               <mat-step step="billingData" label="Datos de Facturación">
-                <app-student-billing-data></app-student-billing-data>
+                <app-student-billing-data (setBillingGroup)="getFormBillingData($event, stepper)"></app-student-billing-data>
               </mat-step>
               <mat-step step="cardData" label="Datos de Carnet">
-                <app-student-card-data></app-student-card-data>
+                <app-student-card-data (setStudentCardGroup)="getFormStudentCardData($event, stepper)"></app-student-card-data>
               </mat-step>
               <ng-template matStepperIcon="home">
                 <mat-icon>home</mat-icon>
