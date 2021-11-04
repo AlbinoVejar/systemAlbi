@@ -8,7 +8,7 @@ import { FirebaseService } from 'src/services/firebase.service';
   styleUrls: ['./student-main-data.component.scss'],
 })
 export class StudentMainDataComponent implements OnInit {
-  @Output() setFormGroup = new EventEmitter<FormGroup>();
+  @Output() setFormGroup = new EventEmitter<boolean>();
   constructor(
     private serviceFirebase: FirebaseService,
   ) {}
@@ -49,7 +49,7 @@ export class StudentMainDataComponent implements OnInit {
 
   public next() {
     if(this.fromStudent.valid){
-      this.setFormGroup.emit(this.fromStudent);
+      this.setFormGroup.emit(true);
     }else{
       this.fromStudent.markAllAsTouched();
     }
