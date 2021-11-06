@@ -37,6 +37,24 @@ export class SignUpComponent implements OnInit {
     }
   }
 
+  getFormEmergencyData(data: FormGroup, stepper: MatStepper){
+    if(data){
+      stepper.next();
+    }
+  }
+
+  getFormBillingData(data: FormGroup, stepper: MatStepper){
+    if(data){
+      stepper.next();
+    }
+  }
+
+  getFormStudentCardData(data: FormGroup, stepper: MatStepper){
+    if(data){
+      stepper.next();
+    }
+  }
+
   private async postStudent(data: any){
     const result = await this.serviceFirebase.storeStudent(data);
     if(result){
