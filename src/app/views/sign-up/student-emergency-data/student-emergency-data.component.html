@@ -1,62 +1,74 @@
 <form [formGroup]="formEmergency">
-  <div class="columns">
-    <div class="column pb-0">
-      <mat-form-field>
-        <mat-label>Familiar 1</mat-label>
-        <input matInput>
-      </mat-form-field>
+  <div formGroupName="family1">
+    <div class="columns">
+      <div class="column pb-0">
+        <mat-form-field>
+          <mat-label>Familiar 1</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+      </div>
+      <div class="column pb-0">
+        <mat-form-field>
+          <mat-label>Parentesco</mat-label>
+          <input formControlName="typeFamily" matInput>
+        </mat-form-field>
+      </div>
+      <div class="column pb-0">
+        <mat-form-field>
+          <mat-label>Teléfono 1</mat-label>
+          <input formControlName="phone" matInput>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="column pb-0">
-      <mat-form-field>
-        <mat-label>Parentesco</mat-label>
-        <input matInput>
-      </mat-form-field>
+  </div>
+  <div formGroupName="family2">
+    <div class="columns">
+      <div class="column py-0">
+        <mat-form-field>
+          <mat-label>Familiar 2</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+      </div>
+      <div class="column py-0">
+        <mat-form-field>
+          <mat-label>Parentesco</mat-label>
+          <input formControlName="typeFamily" matInput>
+        </mat-form-field>
+      </div>
+      <div class="column py-0">
+        <mat-form-field>
+          <mat-label>Teléfono 2</mat-label>
+          <input formControlName="phone" matInput>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="column pb-0">
-      <mat-form-field>
-        <mat-label>Teléfono 1</mat-label>
-        <input matInput>
-      </mat-form-field>
+  </div>
+  <div formGroupName="family3">
+    <div class="columns">
+      <div class="column py-0">
+        <mat-form-field>
+          <mat-label>Familiar 3</mat-label>
+          <input formControlName="name" matInput>
+        </mat-form-field>
+      </div>
+      <div class="column py-0">
+        <mat-form-field>
+          <mat-label>Parentesco</mat-label>
+          <input formControlName="typeFamily" matInput>
+        </mat-form-field>
+      </div>
+      <div class="column py-0">
+        <mat-form-field>
+          <mat-label>Teléfono 3</mat-label>
+          <input formControlName="phone" matInput>
+        </mat-form-field>
+      </div>
     </div>
   </div>
   <div class="columns">
-    <div class="column py-0">
-      <mat-form-field>
-        <mat-label>Familiar 2</mat-label>
-        <input matInput>
-      </mat-form-field>
-    </div>
-    <div class="column py-0">
-      <mat-form-field>
-        <mat-label>Parentesco</mat-label>
-        <input matInput>
-      </mat-form-field>
-    </div>
-    <div class="column py-0">
-      <mat-form-field>
-        <mat-label>Teléfono 2</mat-label>
-        <input matInput>
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="columns">
-    <div class="column py-0">
-      <mat-form-field>
-        <mat-label>Familiar 3</mat-label>
-        <input matInput>
-      </mat-form-field>
-    </div>
-    <div class="column py-0">
-      <mat-form-field>
-        <mat-label>Parentesco</mat-label>
-        <input matInput>
-      </mat-form-field>
-    </div>
-    <div class="column py-0">
-      <mat-form-field>
-        <mat-label>Teléfono 3</mat-label>
-        <input matInput>
-      </mat-form-field>
+    <div class="column py-0 is-flex is-justify-between">
+      <button mat-flat-button color="primary" (click)="next()">Atras</button>
+      <button mat-flat-button color="primary" (click)="next()">Siguiente</button>
     </div>
   </div>
 </form>
