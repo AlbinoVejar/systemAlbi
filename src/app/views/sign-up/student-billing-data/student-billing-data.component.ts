@@ -13,6 +13,13 @@ export class StudentBillingDataComponent implements OnInit {
     rfc: new FormControl(null),
     country: new FormControl(null),
     state: new FormControl(null),
+    city: new FormControl(null),
+    address: new FormControl(null),
+    colony: new FormControl(null),
+    number: new FormControl(null),
+    locality: new FormControl(null),
+    postalCode: new FormControl(null),
+    phone: new FormControl(null),
   });
 
   constructor() { }
@@ -20,4 +27,11 @@ export class StudentBillingDataComponent implements OnInit {
   ngOnInit() {
   }
 
+  next(){
+    if(this.formBillingGroup.valid){
+      this.setBillingGroup.emit(this.formBillingGroup);
+    }else{
+      this.formBillingGroup.markAllAsTouched();
+    }
+  }
 }
