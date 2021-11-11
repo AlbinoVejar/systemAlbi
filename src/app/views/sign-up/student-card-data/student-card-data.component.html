@@ -1,9 +1,9 @@
-<form>
+<form [formGroup]="formStudentCard">
   <div class="columns">
     <div class="column is-two-thirds pb-0">
       <mat-form-field>
         <mat-label>Nombre del Padre o Tutor</mat-label>
-        <input matInput>
+        <input formControlName="tutor" matInput>
       </mat-form-field>
     </div>
   </div>
@@ -11,20 +11,25 @@
     <div class="column pb-0">
       <mat-form-field>
         <mat-label>Teléfono de Papá</mat-label>
-        <input matInput>
+        <input formControlName="phoneFather" matInput>
       </mat-form-field>
     </div>
     <div class="column pb-0">
       <mat-form-field>
         <mat-label>Teléfono de Mamá</mat-label>
-        <input matInput>
+        <input formControlName="phoneMother" matInput>
       </mat-form-field>
     </div>
     <div class="column pb-0">
       <mat-form-field>
         <mat-label>Teléfono de los Abuelos</mat-label>
-        <input matInput>
+        <input formControlName="phoneGrandparents" matInput>
       </mat-form-field>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column py-0 is-flex is-justify-content-end">
+      <button mat-flat-button color="primary" (click)="next()">Siguiente</button>
     </div>
   </div>
 </form>
