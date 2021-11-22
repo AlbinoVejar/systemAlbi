@@ -22,7 +22,7 @@
                 <app-student-billing-data (setBillingGroup)="getFormBillingData($event, stepper)"></app-student-billing-data>
               </mat-step>
               <mat-step step="cardData" label="Datos de Carnet">
-                <app-student-card-data (setStudentCardGroup)="getFormStudentCardData($event, stepper)"></app-student-card-data>
+                <app-student-card-data (setStudentCardGroup)="getFormStudentCardData($event)"></app-student-card-data>
               </mat-step>
               <ng-template matStepperIcon="home">
                 <mat-icon>home</mat-icon>

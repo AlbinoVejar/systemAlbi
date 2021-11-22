@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/services/alert.service';
 import { FirebaseService } from 'src/services/firebase.service';
 import { MatStepper } from '@angular/material/stepper';
@@ -17,15 +17,11 @@ import { MatStepper } from '@angular/material/stepper';
 })
 export class SignUpComponent implements OnInit {
   mainForm = new FormGroup({
-    mainData: new FormGroup({}),
-    ailmentsData: new FormGroup({}),
-    emergencyData: new FormGroup({}),
-    billingData: new FormGroup({}),
-    cardData: new FormGroup({})
   });
   constructor(
     private serviceFirebase: FirebaseService,
     private serviceAlerts: AlertService,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
@@ -33,36 +29,36 @@ export class SignUpComponent implements OnInit {
   //#region OUTPUT View
   getFormStudentData(data: FormGroup, stepper: MatStepper){
     if(data){
-      this.getMainDataForm.setValue(data);
+      this.mainForm.addControl('studentData',data);
       stepper.next();
     }
   }
 
   getFormAilmentsData(data: FormGroup, stepper: MatStepper){
     if(data){
-      this.getAilmentsDataForm.setValue(data);
+      this.mainForm.addControl('ailmentsData',data);
       stepper.next();
     }
   }
 
   getFormEmergencyData(data: FormGroup, stepper: MatStepper){
     if(data){
-      this.getEmergencyDataForm.setValue(data);
+      this.mainForm.addControl('emergencyData',data);
       stepper.next();
     }
   }
 
   getFormBillingData(data: FormGroup, stepper: MatStepper){
     if(data){
-      this.getBillingDataForm.setValue(data);
+      this.mainForm.addControl('billingData',data);
       stepper.next();
     }
   }
 
-  async getFormStudentCardData(data: FormGroup, stepper: MatStepper){
+  async getFormStudentCardData(data: FormGroup){
     if(data){
-      this.getCardDataForm.setValue(data);
-      const result = this.serviceAlerts.ConfirmAlert("Confirmar Acción", "¿Está seguro que desea continuar?");
+      this.mainForm.addControl('cardData',data);
+      const result = await this.serviceAlerts.ConfirmAlert("Confirmar Acción", "¿Está seguro que desea continuar?");
       result
         ? await this.postStudent()
         : null;
@@ -81,7 +77,7 @@ export class SignUpComponent implements OnInit {
 
   //#region GETS CONTROLS FORM
   get getMainDataForm(){
-    return this.mainForm.controls.mainData;
+    return this.mainForm.controls.studentData;
   }
   get getAilmentsDataForm(){
     return this.mainForm.controls.ailmentsData;
