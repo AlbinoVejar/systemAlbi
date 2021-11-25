@@ -12,6 +12,10 @@ import { StudentEmergencyDataComponent } from './sign-up/student-emergency-data/
 import { StudentBillingDataComponent } from './sign-up/student-billing-data/student-billing-data.component';
 import { StudentMainDataComponent } from './sign-up/student-main-data/student-main-data.component';
 import { StudentCardDataComponent } from './sign-up/student-card-data/student-card-data.component';
+import { SideBarComponent } from './dashboard/sidebar/sidebar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ToolbarComponent } from './dashboard/toolbar/toolbar.component';
+import { FooterComponent } from './dashboard/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -29,7 +33,11 @@ import { StudentCardDataComponent } from './sign-up/student-card-data/student-ca
     StudentAilmentsComponent,
     StudentEmergencyDataComponent,
     StudentBillingDataComponent,
-    StudentCardDataComponent
+    StudentCardDataComponent,
+    SideBarComponent,
+    DashboardComponent,
+    ToolbarComponent,
+    FooterComponent
   ]
 })
 export class ViewsModule { }

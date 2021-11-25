@@ -123,36 +123,10 @@ export class FirebaseService {
     }
   }
 
-  public async storeStudent(student: Student) {
+  public async storeStudent(student: any) {
     try {
       const newStudent = collection(this.db, 'students');
-      await addDoc(newStudent, {
-        school: {
-          category: student.escuela.gradoEscolar,
-          section: student.escuela.seccion,
-          grade: student.escuela.grado,
-          campus: student.escuela.campus,
-        },
-        lastFirstName: student.apellidoMaterno,
-        lastSecondName: student.apellidoPaterno,
-        names: student.nombres,
-        sex: student.sexo,
-        bornDate: student.fechaNacimiento,
-        ubication: {
-          city: student.ubicacion.ciudad,
-          address: student.ubicacion.direccion,
-          colony: student.ubicacion.colonia,
-          postalCode: student.ubicacion.codigoPostal,
-          phone: student.ubicacion.telefono,
-        },
-        curp: student.curp,
-        height: student.altura,
-        weight: student.peso,
-        bloodType: student.tipoSangre,
-        glasses: student.usoLentes,
-        alergic: student.alergico,
-        active: true,
-      });
+      await addDoc(newStudent, student);
       return true;
     } catch (err) {
       console.log(err);
