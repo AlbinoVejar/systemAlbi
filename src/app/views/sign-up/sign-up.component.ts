@@ -62,7 +62,7 @@ export class SignUpComponent implements OnInit {
   async getFormStudentCardData(data: FormGroup, stepper: MatStepper){
     if(data){
       this.getCardDataForm.setValue(data);
-      const result = this.serviceAlerts.ConfirmAlert("Confirmar Acción", "¿Está seguro que desea continuar?");
+      const result = await this.serviceAlerts.ConfirmAlert("Confirmar Acción", "¿Está seguro que desea continuar?");
       result
         ? await this.postStudent()
         : null;
