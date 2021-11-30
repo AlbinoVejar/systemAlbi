@@ -1,1 +1,17 @@
-<!-- <router-outlet></router-outlet> -->
+<div class="container is-fluid px-0">
+  <div class="columns">
+    <div class="column">
+      <app-toolbar (showMenu)="ChangeMenu($event)"></app-toolbar>
+    </div>
+  </div>
+</div>
+<div class="container is-fluid px-0">
+	<div class="columns">
+		<div class="column is-one-fifth pt-0 pr-0" *ngIf="showMenu">
+			<app-sidebar></app-sidebar>
+		</div>
+		<div class="column">
+			<router-outlet></router-outlet>
+    </div>
+	</div>
+</div>

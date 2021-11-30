@@ -12,10 +12,10 @@ import { StudentEmergencyDataComponent } from './sign-up/student-emergency-data/
 import { StudentBillingDataComponent } from './sign-up/student-billing-data/student-billing-data.component';
 import { StudentMainDataComponent } from './sign-up/student-main-data/student-main-data.component';
 import { StudentCardDataComponent } from './sign-up/student-card-data/student-card-data.component';
-import { SideBarComponent } from './dashboard/sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ToolbarComponent } from './dashboard/toolbar/toolbar.component';
-import { FooterComponent } from './dashboard/footer/footer.component';
+import { SideBarComponent } from './../shared/components/sidebar/sidebar.component';
+import { ToolbarComponent } from './../shared/components/toolbar/toolbar.component';
+import { FooterComponent } from './../shared/components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -34,8 +34,8 @@ import { FooterComponent } from './dashboard/footer/footer.component';
     StudentEmergencyDataComponent,
     StudentBillingDataComponent,
     StudentCardDataComponent,
-    SideBarComponent,
     DashboardComponent,
+    SideBarComponent,
     ToolbarComponent,
     FooterComponent
   ]

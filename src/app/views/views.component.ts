@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./views.component.scss']
 })
 export class ViewsComponent implements OnInit {
-
+  showMenu: boolean = true;
   constructor() { }
 
   ngOnInit() {
   }
 
+  ChangeMenu(value: boolean){
+    this.showMenu = value;
+  }
 }
