@@ -9,6 +9,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
