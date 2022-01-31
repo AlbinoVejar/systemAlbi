@@ -7,7 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./student-emergency.component.scss']
 })
 export class StudentEmergencyComponent implements OnInit {
-  @Output() setEmergencyGroup = new EventEmitter<FormGroup>();
+  @Output() sendEmergencyForm = new EventEmitter<FormGroup>();
   @Output() goBack = new EventEmitter<void>();
   formEmergency = new FormGroup({
     family1: new FormGroup({
@@ -33,7 +33,7 @@ export class StudentEmergencyComponent implements OnInit {
 
   public next() {
     if(this.formEmergency.valid){
-      this.setEmergencyGroup.emit(this.formEmergency);
+      this.sendEmergencyForm.emit(this.formEmergency);
     }else{
       this.formEmergency.markAllAsTouched();
     }

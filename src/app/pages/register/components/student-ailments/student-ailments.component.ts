@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./student-ailments.component.scss']
 })
 export class StudentAilmentsComponent implements OnInit {
-  @Output() setAilmentsGroup = new EventEmitter<FormGroup>();
+  @Output() sendAilmentsForm = new EventEmitter<FormGroup>();
   @Output() goBack = new EventEmitter<void>();
   formAilments = new FormGroup({
     isDeficit: new FormControl(null, Validators.required),
@@ -22,7 +22,7 @@ export class StudentAilmentsComponent implements OnInit {
 
   public next() {
     if(this.formAilments.valid){
-      this.setAilmentsGroup.emit(this.formAilments);
+      this.sendAilmentsForm.emit(this.formAilments);
     }else{
       this.formAilments.markAllAsTouched();
     }

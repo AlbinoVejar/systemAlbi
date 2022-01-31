@@ -7,7 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./student-billing.component.scss']
 })
 export class StudentBillingComponent implements OnInit {
-  @Output() setBillingGroup = new EventEmitter<FormGroup>();
+  @Output() sendBillingForm = new EventEmitter<FormGroup>();
   @Output() goBack = new EventEmitter<void>();
   formBillingGroup = new FormGroup({
     socialName: new FormControl(null),
@@ -29,7 +29,7 @@ export class StudentBillingComponent implements OnInit {
 
   public next(){
     if(this.formBillingGroup.valid){
-      this.setBillingGroup.emit(this.formBillingGroup);
+      this.sendBillingForm.emit(this.formBillingGroup);
     }else{
       this.formBillingGroup.markAllAsTouched();
     }

@@ -7,7 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./student-parents.component.scss']
 })
 export class StudentParentsComponent implements OnInit {
-  @Output() setParents = new EventEmitter<FormGroup>();
+  @Output() sendParentsForm = new EventEmitter<FormGroup>();
   @Output() goBack = new EventEmitter<void>();
   formParents = new FormGroup({
     fatherData: new FormGroup({
@@ -49,7 +49,7 @@ export class StudentParentsComponent implements OnInit {
   }
   public next() {
     if(this.formParents.valid){
-      this.setParents.emit(this.formParents);
+      this.sendParentsForm.emit(this.formParents);
     }else{
       this.formParents.markAllAsTouched();
     }

@@ -7,7 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./student-card.component.scss']
 })
 export class StudentCardComponent implements OnInit {
-  @Output() setStudentCardGroup = new EventEmitter<FormGroup>();
+  @Output() sendStudentCardForm = new EventEmitter<FormGroup>();
   @Output() goBack = new EventEmitter<void>();
   formStudentCard = new FormGroup({
     tutor: new FormControl(''),
@@ -22,7 +22,7 @@ export class StudentCardComponent implements OnInit {
 
   public next(){
     if(this.formStudentCard.valid){
-      this.setStudentCardGroup.emit(this.formStudentCard);
+      this.sendStudentCardForm.emit(this.formStudentCard);
     }else{
       this.formStudentCard.markAllAsTouched();
     }

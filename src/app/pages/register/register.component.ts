@@ -15,4 +15,28 @@ export class RegisterComponent implements OnInit {
   goBack(){
     
   }
+
+  //Gets Forms
+  public GetMainForm(data: any){
+
+  }
+  public GetAilmentsForm(data: any){
+    
+  }
+  public GetParentsForm(data: any){
+    
+  }
+  public GetEmergencyForm(data: any){
+    
+  }
+  public GetBillingForm(data: any){
+    
+  }
+  public GetStudentCardForm(data: any){
+    this.SaveStudent();
+  }
+  //Methos to API
+  private SaveStudent(){
+    
+  }
 }
