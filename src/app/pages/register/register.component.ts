@@ -12,10 +12,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  goBack(){
-    
-  }
-
   //Gets Forms
   public GetMainForm(data: any){
 
@@ -36,7 +32,7 @@ export class RegisterComponent implements OnInit {
     this.SaveStudent();
   }
   //Methos to API
-  private SaveStudent(){
+  private SaveStudent(): void{
     
   }
 }
