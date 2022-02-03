@@ -6,6 +6,7 @@ import { Ailments } from "./ailments";
 import { Billing } from "./billing";
 
 export class Student {
+  id: number;
   names: string;
   last_name_first: string;
   last_name_second: string;
