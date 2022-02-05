@@ -7,20 +7,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EmergencyService extends CustomService{
-
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) {
-    super();
+    super("emergency", http);
   }
 
   public async UpdateEmergency(id_student: number, data: Emergency){
-    try {
-      await this.http.put(`${this.apiUrl}/billing/${id_student}`, data);
-      return true;
-    } catch (error) {
-      return false;
-    }
+    const result = await this.Update(id_student, data);
   }
 
 }

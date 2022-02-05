@@ -5,36 +5,23 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CathalogService extends CustomService{
+export class CathalogService{
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) { 
-    super();
   }
 
   public async GetSections(){
-    try {
-      const result = await this.http.get(`${this.apiUrl}/sections`);
-      return result;
-    } catch (error) {
-      return [];
-    }
+    const cs = new CustomService("sections", this.http);
+    const result = await cs.GetAll();
   }
   public async GetGrades(){
-    try {
-      const result = await this.http.get(`${this.apiUrl}/grades`);
-      return result;
-    } catch (error) {
-      return [];
-    }
+    const cs = new CustomService("grades", this.http);
+    const result = await cs.GetAll();
   }
   public async GetYears(){
-    try {
-      const result = await this.http.get(`${this.apiUrl}/yearSchool`);
-      return result;
-    } catch (error) {
-      return [];
-    }
+    const cs = new CustomService("yearsSchool", this.http);
+    const result = await cs.GetAll();
   }
 }

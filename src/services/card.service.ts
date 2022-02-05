@@ -9,18 +9,13 @@ import { HttpClient } from '@angular/common/http';
 export class CardService extends CustomService{
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) { 
-    super();
+    super("card", http);
   }
 
   public async UpdateCard(id_student: number, data: Card){
-    try {
-      await this.http.put(`${this.apiUrl}/card/${id_student}`, data);
-      return true;
-    } catch (error) {
-      return false;
-    }
+    const result = await this.Update(id_student, data);
   }
 
 }

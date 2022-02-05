@@ -7,51 +7,25 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BranchOfficesService extends CustomService {
-
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) {
-    super();
+    super("branch_office", http);
   }
 
   public async GetBranchOffice(id_student: number){
-    try {
-      await this.http.get(`${this.apiUrl}/branch_office/${id_student}`);
-      return true;
-    } catch (error) {
-      return false;
-    }
+    const result = await this.GetOne(id_student)
   }
-  public async GetBranchOffices(data){
-    try {
-      await this.http.get(`${this.apiUrl}/branch_office`);
-      return true;
-    } catch (error) {
-      return false;
-    }
+  public async GetBranchOffices(){
+    const result = await this.GetAll();
   }
   public async StoreBranchOffice(data){
-    try {
-      await this.http.post(`${this.apiUrl}/branch_office`, data);
-      return true;
-    } catch (error) {
-      return false;
-    }
+    const result = await this.Store(data);
   }
   public async UpdateBranchOffice(id_branch, data){
-    try {
-      await this.http.put(`${this.apiUrl}/branch_office/${id_branch}`, data);
-      return true;
-    } catch (error) {
-      return false;
-    }
+    const result = await this.Update(id_branch, data);
   }
-  public async DeleteBranchOffice(id_student){
-    try {
-      await this.http.delete(`${this.apiUrl}/branch_office/${id_student}`);
-      return true;
-    } catch (error) {
-      return false;
-    }
+  public async DeleteBranchOffice(id_branch){
+    const result = await this.Delete(id_branch);
   }
 }

@@ -9,18 +9,13 @@ import { CustomService } from './custom.service';
 export class BillingService extends CustomService{
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) { 
-    super();
+    super("billing", http);
   }
 
   public async UpdateBilling(id_student: number, data: Billing){
-    try {
-      await this.http.put(`${this.apiUrl}/billing/${id_student}`, data);
-      return true;
-    } catch (error) {
-      return false;
-    }
+    const result = await this.Update(id_student, data);
   }
 
 }

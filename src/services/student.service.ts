@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Student } from './../models/student';
 import { CustomService } from './custom.service';
 import { Injectable } from '@angular/core';
@@ -6,28 +7,29 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StudentService extends CustomService {
-  
-  constructor() {
-    super();
+  constructor(
+    public http: HttpClient
+  ) {
+    super("student", http);
   }
 
-  public GetStudent(student: Student): Student{
-    return new Student();
+  public async GetStudent(student: Student){
+    const result = await this.GetOne(student.id);
   }
 
-  public GetStudents(student: Student): Array<Student>{
-    return [];
+  public async GetStudents(student: Student){
+    const result = await this.GetAll();
   }
 
-  public StoreStudent(student: Student): boolean{
-    return true;
+  public async StoreStudent(student: Student){
+    const result = await this.Store(student);
   }
 
-  public UpdateStudent(student: Student): boolean{
-    return true;
+  public async UpdateStudent(student: Student){
+    const result = await this.Update(student.id, student);
   }
 
-  public DeleteStudent(student: Student): boolean{
-    return true;
+  public async DeleteStudent(student: Student){
+    const result = await this.Delete(student.id);
   }
 }

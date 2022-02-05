@@ -9,18 +9,13 @@ import { HttpClient } from '@angular/common/http';
 export class AilmentService extends CustomService{
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) {
-    super();
+    super("ailments", http);
   }
 
-  public async UpdateAilment(id_student: number, ailment: Ailments){
-    try {
-      await this.http.put(`${this.apiUrl}/ailment/${id_student}`, ailment);
-      return true;
-    } catch (error) {
-      return false;
-    }
+  public async UpdateAilment(id_student: number, data: Ailments){
+    const result = await this.Update(id_student, data);
   }
 
 }
