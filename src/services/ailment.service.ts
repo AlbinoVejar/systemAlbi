@@ -11,7 +11,7 @@ export class AilmentService extends CustomService{
   constructor(
     public http: HttpClient
   ) {
-    super("ailments", http);
+    super("ailment", http);
   }
 
   public async UpdateAilment(id_student: number, data: Ailments){

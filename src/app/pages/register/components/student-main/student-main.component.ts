@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./student-main.component.scss']
 })
 export class StudentMainComponent implements OnInit {
-  @Output() sendMainForm = new EventEmitter<FormGroup>();
+  @Output() sendMainForm = new EventEmitter<void>();
   mainForm: FormGroup = new FormGroup({
     yearSchool: new FormControl('', [Validators.required]),
     campus: new FormControl('', [Validators.required]),
@@ -50,10 +50,11 @@ export class StudentMainComponent implements OnInit {
   ngOnInit() {
   }
   public next() {
-    if(this.mainForm.valid){
-      this.sendMainForm.emit(this.mainForm);
-    }else{
-      this.mainForm.markAllAsTouched();
-    }
+    // if(this.mainForm.valid){
+    //   this.sendMainForm.emit(this.mainForm);
+    // }else{
+    //   this.mainForm.markAllAsTouched();
+    // }
+    this.sendMainForm.emit();
   }
 }

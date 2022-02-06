@@ -20,9 +20,9 @@
           <div class="text-muted text-center mt-2 mb-4 h1"><strong>Por favor, llene los campos</strong></div>
         </div>
         <div class="card-body px-lg-5">
-          <tabset [justified]="true" type="pills">
+          <tabset [justified]="true" type="pills" #staticTabs>
             <tab heading="Datos Principales">
-              <app-student-main (sendMainForm)="GetMainForm"></app-student-main>
+              <app-student-main (sendMainForm)="GetMainForm($event)"></app-student-main>
             </tab>
             <tab heading="Datos de los Padres">
               <app-student-parents (goBack)="goBack" (sendParentsForm)="GetParentsForm"></app-student-parents>
