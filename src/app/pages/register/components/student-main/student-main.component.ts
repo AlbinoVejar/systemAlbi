@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CathalogService } from 'src/services/cathalog.service';
 
 @Component({
   selector: 'app-student-main',
@@ -44,11 +45,15 @@ export class StudentMainComponent implements OnInit {
     }),
   });
   hasBrothers: boolean = false;
+  yearsSchool: Array<any> = [];
   constructor(
+    private serviceCathalog: CathalogService,
   ) { }
 
   ngOnInit() {
+    this.GetYears();
   }
+
   public next() {
     // if(this.mainForm.valid){
     //   this.sendMainForm.emit(this.mainForm);
@@ -56,5 +61,10 @@ export class StudentMainComponent implements OnInit {
     //   this.mainForm.markAllAsTouched();
     // }
     this.sendMainForm.emit();
+  }
+
+  private async GetYears(){
+    const result = await this.serviceCathalog.GetYears();
+    this.yearsSchool = result;
   }
 }

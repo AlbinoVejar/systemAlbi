@@ -4,8 +4,9 @@
       <div class="col-6">
         <div class="form-group">
           <label for="exampleFormControlInput1">Ciclo Escolar:</label>
-          <select class="form-control" >
-            <option value="">Seleccione ciclo Escolar</option>
+          <select class="form-control" *ngFor="let item of yearsSchool">
+            <option [value]="null">Seleccione ciclo Escolar</option>
+            <option [value]="item.year">{{item.year}}</option>
           </select>
         </div>
       </div>
