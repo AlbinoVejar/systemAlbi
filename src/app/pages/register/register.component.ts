@@ -20,11 +20,12 @@ export class RegisterComponent implements OnInit {
   @ViewChild('staticTabs', {static: false}) staticTabs?: TabsetComponent;
   tabs = TABS;
   constructor(
-    private serviceStudent: StudentService
+    private serviceStudent: StudentService,
   ) { }
 
   ngOnInit() {
   }
+
   public goBack(tab: number){
     this.selectTab(tab - 1);
   }
@@ -52,8 +53,9 @@ export class RegisterComponent implements OnInit {
     (this.staticTabs.tabs[tab].active = true);
   }
   //Methos to API
-  private SaveStudent(): void{
-    
+  private async SaveStudent(data: any){
+    const result = await this.serviceStudent.StoreStudent(data);
+    return result;
   }
   
 }
