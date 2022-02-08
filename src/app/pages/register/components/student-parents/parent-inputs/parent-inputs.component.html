@@ -1,98 +1,100 @@
-<div class="row py-1">
-  <div class="col-12">
-    <span class="h3">Datos del :</span>
-    <div class="row">
-      <div class="col-4">
-        <div class="form-group">
-          <label>Nombre Completo:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Teléfono de Casa:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Celular:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <div class="form-group">
-          <label>Dirección:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Colonia:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Código Postal:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <div class="form-group">
-          <label>País:</label>
-          <select class="form-control">
-            <option value="">Seleccione un País</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Estado:</label>
-          <select class="form-control">
-            <option value="">Seleccione un Estado</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Ciudad:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-    </div>
-    <div class="px-2 border border-light">
-      <h4><strong>Datos Laborales</strong></h4>
+<form [formGroup]="parentForm">
+  <div class="row py-1">
+    <div class="col-12">
+      <span class="h3">Datos del {{title}}:</span>
       <div class="row">
         <div class="col-4">
           <div class="form-group">
-            <label>Ocupación</label>
-            <input type="text" class="form-control">
+            <label>Nombre Completo:</label>
+            <input type="text" class="form-control" formControlName="names">
           </div>
         </div>
         <div class="col-4">
           <div class="form-group">
-            <label>Lugar de Trabajo</label>
-            <input type="text" class="form-control">
+            <label>Teléfono de Casa:</label>
+            <input type="text" class="form-control" formControlName="mainPhoneNumber">
           </div>
         </div>
-        <div class="col-2">
+        <div class="col-4">
           <div class="form-group">
-            <label>Teléfono del Trabajo</label>
-            <input type="text" class="form-control">
+            <label>Celular:</label>
+            <input type="text" class="form-control" formControlName="phoneNumber">
           </div>
         </div>
-        <div class="col-2">
+      </div>
+      <div class="row">
+        <div class="col-4">
           <div class="form-group">
-            <label>Horario</label>
-            <input type="text" class="form-control">
+            <label>Dirección:</label>
+            <input type="text" class="form-control" formControlName="address">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Colonia:</label>
+            <input type="text" class="form-control" formControlName="colony">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Código Postal:</label>
+            <input type="text" class="form-control" formControlName="postalCode">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label>País:</label>
+            <select class="form-control" formControlName="country">
+              <option value="">Seleccione un País</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Estado:</label>
+            <select class="form-control" formControlName="state">
+              <option value="">Seleccione un Estado</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Ciudad:</label>
+            <input type="text" class="form-control" formControlName="city">
+          </div>
+        </div>
+      </div>
+      <div class="px-2 border border-light">
+        <h4><strong>Datos Laborales</strong></h4>
+        <div class="row" formGroupName="workData">
+          <div class="col-4">
+            <div class="form-group">
+              <label>Ocupación</label>
+              <input type="text" class="form-control" formControlName="jobDescription">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Lugar de Trabajo</label>
+              <input type="text" class="form-control" formControlName="workPlace">
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <label>Teléfono del Trabajo</label>
+              <input type="text" class="form-control" formControlName="workPhone">
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <label>Horario</label>
+              <input type="text" class="form-control" formControlName="schedule">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</form>

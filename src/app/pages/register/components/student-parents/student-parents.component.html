@@ -1,20 +1,20 @@
 <div class="container-fluid pt-4">
   <form action="">
     <div>
-      <app-parent-inputs></app-parent-inputs>
+      <app-parent-inputs [title]="'Padre'" [parentForm]="formParents.get('fatherData')"></app-parent-inputs>
     </div>
     <div>
-      <app-parent-inputs></app-parent-inputs>
+      <app-parent-inputs [title]="'Madre'" [parentForm]="formParents.get('motherData')"></app-parent-inputs>
     </div>
   </form>
   <div class="row pt-2 d-flex justify-content-between">
     <div class="col-6">
-      <button class="btn btn-secondary">
+      <button class="btn btn-secondary" (click)="goBack">
         Atras
       </button>
     </div>
     <div class="col-6 d-flex justify-content-end">
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" (click)="next">
         Siguiente
       </button>
     </div>

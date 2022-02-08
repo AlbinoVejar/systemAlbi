@@ -1,77 +1,17 @@
 <div class="container-fluid pt-4">
-  <form action="">
-    <span class="h3">Datos del Familiar #1</span>
-    <div class="row">
-      <div class="col-4">
-        <div class="form-group">
-          <label>Nombre:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Parentesco:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Teléfono:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-    </div>
-    <span class="h3">Datos del Familiar #2</span>
-    <div class="row">
-      <div class="col-4">
-        <div class="form-group">
-          <label>Nombre:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Parentesco:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Teléfono:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-    </div>
-    <span class="h3">Datos del Familiar #3</span>
-    <div class="row">
-      <div class="col-4">
-        <div class="form-group">
-          <label>Nombre:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Parentesco:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Teléfono:</label>
-          <input type="text" class="form-control">
-        </div>
-      </div>
-    </div>
+  <form [formGroup]="formEmergency">
+    <app-emergency-inputs [emergency]="formEmergency.get('family1')"></app-emergency-inputs>
+    <app-emergency-inputs [emergency]="formEmergency.get('family2')"></app-emergency-inputs>
+    <app-emergency-inputs [emergency]="formEmergency.get('family3')"></app-emergency-inputs>
   </form>
   <div class="row pt-2 d-flex justify-content-between">
     <div class="col-6">
-      <button class="btn btn-secondary">
+      <button class="btn btn-secondary" (click)="back">
         Atras
       </button>
     </div>
     <div class="col-6 d-flex justify-content-end">
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" (click)="next">
         Siguiente
       </button>
     </div>

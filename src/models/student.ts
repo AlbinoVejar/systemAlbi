@@ -23,11 +23,16 @@ export class Student {
   blood_type: string;
   alergic: string;
   glasses: string;
+  yearSchool: string;
+  campus: string;
+  section: string;
+  grade: string;
   ailments: Ailments;
   billing: Billing;
   card: Card;
-  emergency: Emergency;
   father: Parent;
   mother: Parent;
   branch: BranchOffice;
+  last_school_name: string;
+  brothers_names: string;
 }

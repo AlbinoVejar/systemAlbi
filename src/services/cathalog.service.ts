@@ -24,4 +24,9 @@ export class CathalogService{
     const cs = new CustomService("yearsSchool", this.http);
     return await cs.GetAll();
   }
+
+  public async GetCampus(){
+    const cs = new CustomService("campus", this.http);
+    return await cs.GetAll();
+  }
 }

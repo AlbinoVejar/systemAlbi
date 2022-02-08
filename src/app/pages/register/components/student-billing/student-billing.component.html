@@ -1,16 +1,16 @@
 <div class="container-fluid pt-4">
-  <form>
+  <form [formGroup]="formBillingGroup">
     <div class="row">
       <div class="col-6">
         <div class="form-group">
           <label>Razón Social</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="socialName">
         </div>
       </div>
       <div class="col-6">
         <div class="form-group">
           <label>R.F.C</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="rfc">
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
       <div class="col-4">
         <div class="form-group">
           <label>País</label>
-          <select class="form-control">
+          <select class="form-control" formControlName="country">
             <option value="">Seleccione un País</option>
           </select>
         </div>
@@ -26,7 +26,7 @@
       <div class="col-4">
         <div class="form-group">
           <label>Estado</label>
-          <select class="form-control">
+          <select class="form-control" formControlName="state">
             <option value="">Selecione un Estado</option>
           </select>
         </div>
@@ -34,7 +34,7 @@
       <div class="col-4">
         <div class="form-group">
           <label>Municipio</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="city">
         </div>
       </div>
     </div>
@@ -42,19 +42,19 @@
       <div class="col-4">
         <div class="form-group">
           <label>Dirección</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="address">
         </div>
       </div>
       <div class="col-4">
         <div class="form-group">
           <label>Colonia</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="colony">
         </div>
       </div>
       <div class="col-4">
         <div class="form-group">
           <label>No</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="number">
         </div>
       </div>
     </div>
@@ -62,26 +62,26 @@
       <div class="col-4">
         <div class="form-group">
           <label>Localidad</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="locality">
         </div>
       </div>
       <div class="col-4">
         <div class="form-group">
           <label>Código Postal</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="postalCode">
         </div>
       </div>
       <div class="col-4">
         <div class="form-group">
           <label>Telefono</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" formControlName="phone">
         </div>
       </div>
     </div>
   </form>
   <div class="row pt-2 d-flex justify-content-between">
     <div class="col-6">
-      <button class="btn btn-secondary">
+      <button class="btn btn-secondary" (click)="">
         Atras
       </button>
     </div>

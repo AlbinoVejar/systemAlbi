@@ -1,3 +1,4 @@
+import { EmergencyInputsComponent } from './../../pages/register/components/student-emergency/components/emergency-inputs/emergency-inputs.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,7 @@ import { ParentInputsComponent } from 'src/app/pages/register/components/student
     RouterModule.forChild(AuthLayoutRoutes),
     TabsModule,
     FormsModule,
+    ReactiveFormsModule
     // NgbModule
   ],
   declarations: [
@@ -32,6 +34,7 @@ import { ParentInputsComponent } from 'src/app/pages/register/components/student
     StudentMainComponent,
     StudentParentsComponent,
     ParentInputsComponent,
+    EmergencyInputsComponent,
   ]
 })
 export class AuthLayoutModule { }

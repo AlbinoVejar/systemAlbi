@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-parent-inputs',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parent-inputs.component.scss']
 })
 export class ParentInputsComponent implements OnInit {
-
+  @Input() parentForm: FormGroup;
+  @Input() title: string;
   constructor() { }
 
   ngOnInit() {

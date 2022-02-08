@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://system-albi.herokuapp.com/api"
+  // apiUrl: "https://system-albi.herokuapp.com/api",
+  apiUrl: "http://localhost:8000/api"
 };
 
 /*

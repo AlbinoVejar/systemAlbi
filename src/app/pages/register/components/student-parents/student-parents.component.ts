@@ -8,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class StudentParentsComponent implements OnInit {
   @Output() sendParentsForm = new EventEmitter<FormGroup>();
-  @Output() goBack = new EventEmitter<void>();
+  @Output() goBack = new EventEmitter<number>();
   formParents = new FormGroup({
     fatherData: new FormGroup({
       names: new FormControl(null),
@@ -17,6 +17,7 @@ export class StudentParentsComponent implements OnInit {
       address: new FormControl(null),
       colony: new FormControl(null),
       postalCode: new FormControl(null),
+      country: new FormControl(null),
       state: new FormControl(null),
       city: new FormControl(null),
       workData: new FormGroup({
@@ -55,6 +56,6 @@ export class StudentParentsComponent implements OnInit {
     }
   }
   public back(){
-    this.goBack.emit();
+    this.goBack.emit(1);
   }
 }

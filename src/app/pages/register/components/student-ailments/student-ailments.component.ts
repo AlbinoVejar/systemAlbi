@@ -10,8 +10,8 @@ export class StudentAilmentsComponent implements OnInit {
   @Output() sendAilmentsForm = new EventEmitter<FormGroup>();
   @Output() goBack = new EventEmitter<void>();
   formAilments = new FormGroup({
-    isDeficit: new FormControl(null, Validators.required),
-    useMedicine: new FormControl(null, Validators.required),
+    isDeficit: new FormControl(null),
+    useMedicine: new FormControl(null),
     medicines: new FormControl(null),
     informationAboutStudent: new FormControl(null),
   });
