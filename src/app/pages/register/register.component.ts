@@ -6,6 +6,7 @@ import { Ailments } from 'src/models/ailments';
 import { Parent } from 'src/models/parent';
 import { Emergency } from 'src/models/emergency';
 import { Billing } from 'src/models/billing';
+import { Card } from 'src/models/card';
 
 enum TABS{
   main = 0,
@@ -118,10 +119,26 @@ export class RegisterComponent implements OnInit {
     objEmergency3.phone = data.family3.phone;
   }
   private TransformBilling(data: any){
-    let objBilling = new Billing()
+    let objBilling = new Billing();
+    objBilling.socialName = data.socialName;
+    objBilling.rfc = data.rfc;
+    objBilling.country = data.country;
+    objBilling.state = data.state;
+    objBilling.city = data.city;
+    objBilling.address = data.address;
+    objBilling.number = data.number;
+    objBilling.locality = data.locality;
+    objBilling.postalCode = data.postalCode;
+    objBilling.phone = data.phone;
+    this.newStudent.billing = objBilling;
   }
   private TransformCard(data: any){
-    
+    let objCard = new Card();
+    objCard.names = data.tutor;
+    objCard.phone_father = data.phoneFather;
+    objCard.phone_mother = data.phoneMother;
+    objCard.phone_grandparents = data.phoneGrandparents;
+    this.newStudent.card = objCard;
   }
   //Gets Forms
   public GetMainForm(data: any){
@@ -144,15 +161,16 @@ export class RegisterComponent implements OnInit {
     this.selectTab(this.tabs.card);
   }
   public GetStudentCardForm(data: any){
-    // this.SaveStudent();
+    this.TransformCard(data);
+    this.SaveStudent();
   }
   private selectTab(tab: number){
     this.staticTabs.tabs[tab] &&
     (this.staticTabs.tabs[tab].active = true);
   }
   //Methos to API
-  private async SaveStudent(data: any){
-    const result = await this.serviceStudent.StoreStudent(data);
+  private async SaveStudent(){
+    const result = await this.serviceStudent.StoreStudent(this.newStudent);
     return result;
   }
   
