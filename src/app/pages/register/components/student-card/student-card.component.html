@@ -1,10 +1,10 @@
 <div class="container-fluid pt-4">
-  <form>
+  <form [formGroup]="formStudentCard">
     <div class="row">
       <div class="col-12">
         <div class="form-group">
           <label>Nombre Completo del Padre o Tutor</label>
-          <input type="text" class="form-control" formControlName="tutor">
+          <input type="text" class="form-control" formControlName="names">
         </div>
       </div>
     </div>
@@ -12,31 +12,31 @@
       <div class="col-4">
         <div class="form-group">
           <label>Teléfono de Papá</label>
-          <input type="text" class="form-control" formControlName="phoneFather">
+          <input type="text" class="form-control" formControlName="phone_father">
         </div>
       </div>
       <div class="col-4">
         <div class="form-group">
           <label>Teléfono de Mamá</label>
-          <input type="text" class="form-control" formControlName="phoneMother">
+          <input type="text" class="form-control" formControlName="phone_mother">
         </div>
       </div>
       <div class="col-4">
         <div class="form-group">
           <label>Teléfono de los Abuelos</label>
-          <input type="text" class="form-control" formControlName="phoneGrandparents">
+          <input type="text" class="form-control" formControlName="phone_grandparents">
         </div>
       </div>
     </div>
   </form>
   <div class="row pt-2 d-flex justify-content-between">
     <div class="col-6">
-      <button class="btn btn-secondary" (click)="back">
+      <button class="btn btn-secondary" (click)="back()">
         Atras
       </button>
     </div>
     <div class="col-6 d-flex justify-content-end">
-      <button class="btn btn-primary" (click)="next">
+      <button class="btn btn-primary" (click)="next()">
         Siguiente
       </button>
     </div>

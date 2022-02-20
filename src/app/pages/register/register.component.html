@@ -25,19 +25,19 @@
               <app-student-main (sendMainForm)="GetMainForm($event)"></app-student-main>
             </tab>
             <tab heading="Datos de los Padres">
-              <app-student-parents (goBack)="goBack($event)" (sendParentsForm)="GetParentsForm"></app-student-parents>
+              <app-student-parents (goBack)="goBack($event)" (sendParentsForm)="GetParentsForm($event)"></app-student-parents>
             </tab>
             <tab heading="Padecimientos">
-              <app-student-ailments (goBack)="goBack($event)" (sendAilmentsForm)="GetAilmentsForm"></app-student-ailments>
+              <app-student-ailments (goBack)="goBack($event)" (sendAilmentsForm)="GetAilmentsForm($event)"></app-student-ailments>
             </tab>
             <tab heading="Datos de Emergencia">
-              <app-student-emergency (goBack)="goBack($event)" (sendEmergencyForm)="GetEmergencyForm"></app-student-emergency>
+              <app-student-emergency (goBack)="goBack($event)" (sendEmergencyForm)="GetEmergencyForm($event)"></app-student-emergency>
             </tab>
             <tab heading="Datos de Facturación">
-              <app-student-billing (goBack)="goBack($event)" (sendBillingForm)="GetBillingForm"></app-student-billing>
+              <app-student-billing (goBack)="goBack($event)" (sendBillingForm)="GetBillingForm($event)"></app-student-billing>
             </tab>
             <tab heading="Datos de Carnet">
-              <app-student-card (goBack)="goBack($event)" (sendStudentCardForm)="GetStudentCardForm"></app-student-card>
+              <app-student-card (goBack)="goBack($event)" (sendStudentCardForm)="GetStudentCardForm($event)"></app-student-card>
             </tab>
           </tabset>
         </div>

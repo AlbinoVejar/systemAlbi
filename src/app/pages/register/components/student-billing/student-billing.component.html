@@ -4,7 +4,7 @@
       <div class="col-6">
         <div class="form-group">
           <label>Razón Social</label>
-          <input type="text" class="form-control" formControlName="socialName">
+          <input type="text" class="form-control" formControlName="social_name">
         </div>
       </div>
       <div class="col-6">
@@ -54,7 +54,7 @@
       <div class="col-4">
         <div class="form-group">
           <label>No</label>
-          <input type="text" class="form-control" formControlName="number">
+          <input type="text" class="form-control" formControlName="address_number">
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
       <div class="col-4">
         <div class="form-group">
           <label>Código Postal</label>
-          <input type="text" class="form-control" formControlName="postalCode">
+          <input type="text" class="form-control" formControlName="postal_code">
         </div>
       </div>
       <div class="col-4">
@@ -81,12 +81,12 @@
   </form>
   <div class="row pt-2 d-flex justify-content-between">
     <div class="col-6">
-      <button class="btn btn-secondary" (click)="back">
+      <button class="btn btn-secondary" (click)="back()">
         Atras
       </button>
     </div>
     <div class="col-6 d-flex justify-content-end">
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" (click)="next()">
         Siguiente
       </button>
     </div>

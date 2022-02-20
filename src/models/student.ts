@@ -32,7 +32,8 @@ export class Student {
   card: Card;
   father: Parent;
   mother: Parent;
-  branch: BranchOffice;
+  id_branch: number;
   last_school_name: string;
   brothers_names: string;
+  emergency: Array<Emergency>;
 }

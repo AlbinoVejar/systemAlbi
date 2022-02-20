@@ -32,7 +32,7 @@ export class CustomService {
 
   public async Store(data: any){
     try {
-      return await firstValueFrom(this.http.put(`${this.apiUrl}/${this.category}`, data));
+      return await firstValueFrom(this.http.post(`${this.apiUrl}/${this.category}`, data));
     } catch (error) {
       return error;
     }

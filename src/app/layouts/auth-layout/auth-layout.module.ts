@@ -21,8 +21,8 @@ import { ParentInputsComponent } from 'src/app/pages/register/components/student
     RouterModule.forChild(AuthLayoutRoutes),
     TabsModule,
     FormsModule,
-    ReactiveFormsModule
-    // NgbModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   declarations: [
     LoginComponent,

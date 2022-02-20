@@ -29,4 +29,13 @@ export class CathalogService{
     const cs = new CustomService("campus", this.http);
     return await cs.GetAll();
   }
+
+  public async GetCountries(){
+    const cs = new CustomService("countries", this.http);
+    return await cs.GetAll();
+  }
+  public async GetStates(){
+    const cs = new CustomService("states", this.http);
+    return await cs.GetAll();
+  }
 }

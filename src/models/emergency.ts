@@ -1,5 +1,5 @@
 export class Emergency {
-  name: string;
-  typeFamily: string;
+  names: string;
+  family_relationship: string;
   phone: string;
 }

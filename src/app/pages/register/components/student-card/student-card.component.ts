@@ -10,10 +10,10 @@ export class StudentCardComponent implements OnInit {
   @Output() sendStudentCardForm = new EventEmitter<FormGroup>();
   @Output() goBack = new EventEmitter<void>();
   formStudentCard = new FormGroup({
-    tutor: new FormControl(''),
-    phoneFather: new FormControl(''),
-    phoneMother: new FormControl(''),
-    phoneGrandparents: new FormControl('')
+    names: new FormControl(''),
+    phone_father: new FormControl(''),
+    phone_mother: new FormControl(''),
+    phone_grandparents: new FormControl('')
   });
   constructor() { }
 
@@ -22,7 +22,7 @@ export class StudentCardComponent implements OnInit {
 
   public next(){
     if(this.formStudentCard.valid){
-      this.sendStudentCardForm.emit(this.formStudentCard);
+      this.sendStudentCardForm.emit(this.formStudentCard.value);
     }else{
       this.formStudentCard.markAllAsTouched();
     }

@@ -15,7 +15,7 @@
           <label for="exampleFormControlInput1">Campus:</label>
           <select class="form-control" formControlName="campus">
             <option [value]="null">Seleccione un Campus</option>
-            <option [value]="item.id" *ngFor="let item of campus">{{item.name}}</option>
+            <option [value]="item.name" *ngFor="let item of campus">{{item.name}}</option>
           </select>
         </div>
       </div>
@@ -26,7 +26,7 @@
           <label for="exampleFormControlInput1">Sección:</label>
           <select class="form-control" formControlName="section">
             <option [value]="null">Seleccione la Sección</option>
-            <option [value]="item.id" *ngFor="let item of sections">{{item.section}}</option>
+            <option [value]="item.section" *ngFor="let item of sections">{{item.section}}</option>
           </select>
         </div>
       </div>
@@ -35,7 +35,7 @@
           <label for="exampleFormControlInput1">Grado:</label>
           <select class="form-control" formControlName="grade">
             <option [value]="null">Seleccione un Grado</option>
-            <option [value]="item.id" *ngFor="let item of grades">{{item.name}}</option>
+            <option [value]="item.name" *ngFor="let item of grades">{{item.name}}</option>
           </select>
         </div>
       </div>
@@ -48,20 +48,20 @@
             <div class="row">
               <div class="col-4">
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Apellido Paterno:</label>
-                  <input type="text" class="form-control" formControlName="lastFirstName">
+                  <label>Apellido Paterno:</label>
+                  <input type="text" class="form-control" formControlName="lastFirstName" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Apellido Materno:</label>
-                  <input type="text" class="form-control" formControlName="lastSecondName">
+                  <label>Apellido Materno:</label>
+                  <input type="text" class="form-control" formControlName="lastSecondName" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Nombres:</label>
-                  <input type="text" class="form-control" formControlName="names">
+                  <label>Nombres:</label>
+                  <input type="text" class="form-control" formControlName="names" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
             </div>
@@ -76,9 +76,9 @@
                   </select>
                 </div>
               </div>
-              <div class="col-8">
+              <div class="col-8" formGroupName="bornDate">
                 <span class="h4 pb-4">Fecha de Nacimiento:</span>
-                <div class="row" formGroupName="bornDate">
+                <div class="row">
                   <div class="col-4">
                     <div class="form-group">
                       <label>Año</label>
@@ -113,31 +113,31 @@
               <div class="col-3">
                 <div class="form-group">
                   <label>Lugar de Nacimiento:</label>
-                  <input type="text" class="form-control" formControlName="bornPlace">
+                  <input type="text" class="form-control" formControlName="bornPlace" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-3">
                 <div class="form-group">
                   <label>Dirección:</label>
-                  <input type="text" class="form-control" formControlName="address">
+                  <input type="text" class="form-control" formControlName="address" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-2">
                 <div class="form-group">
                   <label>Colonia:</label>
-                  <input type="text" class="form-control" formControlName="col">
+                  <input type="text" class="form-control" formControlName="col" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-2">
                 <div class="form-group">
                   <label>Código Postal:</label>
-                  <input type="text" class="form-control" formControlName="postalCode">
+                  <input type="text" class="form-control" formControlName="postalCode" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-2">
                 <div class="form-group">
                   <label>Télefono:</label>
-                  <input type="text" class="form-control" formControlName="phone">
+                  <input type="text" class="form-control" formControlName="phone" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
             </div>
@@ -145,7 +145,7 @@
               <div class="col-4">
                 <div class="form-group">
                   <label>CURP:</label>
-                  <input type="text" class="form-control" formControlName="curp">
+                  <input type="text" class="form-control" formControlName="curp" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-2">
@@ -206,7 +206,7 @@
         <div class="form-group">
           <label><strong>¿Tiene hermanos?</strong></label>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox">
+            <input class="form-check-input" type="checkbox" (change)="hasBrothers = !hasBrothers">
             <label class="form-check-label">
               {{hasBrothers ? 'Sí' : 'No'}}
             </label>
@@ -218,13 +218,13 @@
       <div class="col-6">
         <div class="form-group">
           <label>Nombre de la Escuela de Procedencia</label>
-          <input type="text" class="form-control" formControlName="lastSchoolName">
+          <input type="text" class="form-control" formControlName="lastSchoolName" oninput="this.value = this.value.toUpperCase()">
         </div>
       </div>
       <div class="col-6">
         <div class="form-group">
           <label>Nombres de los Hermanos (En Caso de Pertenecer a Nuestra Escuela)</label>
-          <input type="text" class="form-control" formControlName="brothersNames">
+          <input type="text" class="form-control" formControlName="brothersNames" oninput="this.value = this.value.toUpperCase()">
         </div>
       </div>
     </div>

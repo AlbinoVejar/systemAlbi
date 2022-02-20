@@ -1,23 +1,25 @@
-<div formGroupName="family1">
-  <span class="h3">Datos del Familiar #1</span>
-  <div class="row">
-    <div class="col-4">
-      <div class="form-group">
-        <label>Nombre:</label>
-        <input type="text" class="form-control" formControlName="names">
+<form [formGroup]="emergency">
+  <div>
+    <span class="h3">Datos del Familiar #1</span>
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label>Nombre:</label>
+          <input type="text" class="form-control" formControlName="names">
+        </div>
       </div>
-    </div>
-    <div class="col-4">
-      <div class="form-group">
-        <label>Parentesco:</label>
-        <input type="text" class="form-control" formControlName="typeFamily">
+      <div class="col-4">
+        <div class="form-group">
+          <label>Parentesco:</label>
+          <input type="text" class="form-control" formControlName="family_relationship">
+        </div>
       </div>
-    </div>
-    <div class="col-4">
-      <div class="form-group">
-        <label>Teléfono:</label>
-        <input type="text" class="form-control" formControlName="phone">
+      <div class="col-4">
+        <div class="form-group">
+          <label>Teléfono:</label>
+          <input type="text" class="form-control" formControlName="phone">
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>

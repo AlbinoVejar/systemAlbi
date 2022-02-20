@@ -22,7 +22,10 @@ export class StudentService extends CustomService {
   }
 
   public async StoreStudent(student: Student){
+    console.log(student, 'data');
     const result = await this.Store(student);
+    console.log(result, 'return');
+    return await result;
   }
 
   public async UpdateStudent(student: Student){

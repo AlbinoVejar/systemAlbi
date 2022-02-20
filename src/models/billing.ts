@@ -1,13 +1,13 @@
 export class Billing {
-  socialName: string;
+  social_name: string;
   rfc: string;
   country: string;
   state: string;
   city: string;
   address: string;
   colony: string;
-  number: string;
+  address_number: string;
   locality: string;
-  postalCode: string;
+  postal_code: string;
   phone: string;
 }

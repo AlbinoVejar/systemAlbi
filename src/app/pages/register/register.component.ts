@@ -23,12 +23,13 @@ enum TABS{
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild('staticTabs', {static: false}) staticTabs?: TabsetComponent;
+  @ViewChild('staticTabs', {static: true}) staticTabs?: TabsetComponent;
   newStudent: Student = new Student();
   tabs = TABS;
   constructor(
     private serviceStudent: StudentService,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
@@ -37,6 +38,7 @@ export class RegisterComponent implements OnInit {
     this.selectTab(tab - 1);
   }
   private TransformMainForm(data: any){
+    const date = `${data.bornDate.year}/${data.bornDate.month}/${data.bornDate.day}`;
     this.newStudent.yearSchool = data.yearSchool;
     this.newStudent.campus = data.campus;
     this.newStudent.section = data.section;
@@ -44,7 +46,7 @@ export class RegisterComponent implements OnInit {
     this.newStudent.last_name_first = data.lastFirstName;
     this.newStudent.last_name_second = data.lastSecondName;
     this.newStudent.names = data.names;
-    this.newStudent.born_date = `${data.bornDate.year}/${data.bornDate.month}/${data.bornDate.day}`;
+    this.newStudent.born_date = date != "null/null/null" ? date : null;
     this.newStudent.born_place = data.bornPlace;
     this.newStudent.address = data.address;
     this.newStudent.colony = data.col;
@@ -58,119 +60,86 @@ export class RegisterComponent implements OnInit {
     this.newStudent.alergic = data.alergic;
     this.newStudent.last_school_name = data.lastSchoolName;
     this.newStudent.brothers_names = data.brothersNames;
+    this.newStudent.id_branch = 1;
   }
   private TransformAilemnt(data: any){
     let objAilment = new Ailments();
-    objAilment.has_deficit = data.isDefecit;
-    objAilment.use_medicine = data.useMedicine;
-    objAilment.medicines = data.medicines;
-    objAilment.info_vital = data.informationAboutStudent;
+    objAilment = data;
+    
     this.newStudent.ailments = objAilment;
   }
   private TransformParent(data: any){
-    let objParentParent = new Parent();
+    let objParentFather = new Parent();
     let objParentMother = new Parent();
     //Father
-    objParentParent.names = data.fatherData.names;
-    objParentParent.phone = data.fatherData.mainPhoneNumber;
-    objParentParent.cellphone = data.fatherData.phoneNumber;
-    objParentParent.address = data.fatherData.address;
-    objParentParent.colony = data.fatherData.colony;
-    objParentParent.postal_code = data.fatherData.postalCode;
-    objParentParent.country = data.fatherData.country;
-    objParentParent.state = data.fatherData.state;
-    objParentParent.city = data.fatherData.city;
-    objParentParent.job = data.fatherData.workData.jobDescription;
-    objParentParent.job_address = data.fatherData.workData.workPlace;
-    objParentParent.job_phone = data.fatherData.workData.workPhone;
-    objParentParent.schedule = data.fatherData.workData.schedule;
+    objParentFather = data.fatherData;
     //Mother
-    objParentMother.names = data.motherData.names;
-    objParentMother.phone = data.motherData.mainPhoneNumber;
-    objParentMother.cellphone = data.motherData.phoneNumber;
-    objParentMother.address = data.motherData.address;
-    objParentMother.colony = data.motherData.colony;
-    objParentMother.postal_code = data.motherData.postalCode;
-    objParentMother.country = data.motherData.country;
-    objParentMother.state = data.motherData.state;
-    objParentMother.city = data.motherData.city;
-    objParentMother.job = data.motherData.workData.jobDescription;
-    objParentMother.job_address = data.motherData.workData.workPlace;
-    objParentMother.job_phone = data.motherData.workData.workPhone;
-    objParentMother.schedule = data.motherData.workData.schedule;
-    this.newStudent.father = objParentParent;
+    objParentMother = data.motherData;
+    
+    this.newStudent.father = objParentFather;
     this.newStudent.mother = objParentMother;
   }
   private TransformEmergency(data: any){
+    this.newStudent.emergency == undefined && (this.newStudent.emergency = []);
     let objEmergency1 = new Emergency();
     let objEmergency2 = new Emergency();
     let objEmergency3 = new Emergency();
-    //1
-    objEmergency1.name = data.family1.name;
-    objEmergency1.typeFamily = data.family1.typeFamily;
-    objEmergency1.phone = data.family1.phone;
-    //2
-    objEmergency2.name = data.family2.name;
-    objEmergency2.typeFamily = data.family2.typeFamily;
-    objEmergency2.phone = data.family2.phone;
-    //3
-    objEmergency3.name = data.family3.name;
-    objEmergency3.typeFamily = data.family3.typeFamily;
-    objEmergency3.phone = data.family3.phone;
+
+    objEmergency1 = data.family1;
+    objEmergency2 = data.family2;
+    objEmergency3 = data.family3;
+    this.newStudent.emergency.push(objEmergency1,objEmergency2, objEmergency3);
   }
   private TransformBilling(data: any){
     let objBilling = new Billing();
-    objBilling.socialName = data.socialName;
-    objBilling.rfc = data.rfc;
-    objBilling.country = data.country;
-    objBilling.state = data.state;
-    objBilling.city = data.city;
-    objBilling.address = data.address;
-    objBilling.number = data.number;
-    objBilling.locality = data.locality;
-    objBilling.postalCode = data.postalCode;
-    objBilling.phone = data.phone;
+    objBilling = data;
     this.newStudent.billing = objBilling;
   }
   private TransformCard(data: any){
     let objCard = new Card();
-    objCard.names = data.tutor;
-    objCard.phone_father = data.phoneFather;
-    objCard.phone_mother = data.phoneMother;
-    objCard.phone_grandparents = data.phoneGrandparents;
+    objCard = data;
     this.newStudent.card = objCard;
   }
   //Gets Forms
   public GetMainForm(data: any){
-    this.TransformMainForm(data);
-    this.selectTab(this.tabs.parents);
+    if(data){
+      this.TransformMainForm(data);
+      this.selectTab(this.tabs.parents);
+    }
   }
   public GetAilmentsForm(data: any){
-    this.TransformAilemnt(data);
+    if(data)
+      this.TransformAilemnt(data);
     this.selectTab(this.tabs.emergency);
   }
   public GetParentsForm(data: any){
-    this.TransformParent(data);
+    if(data)
+      this.TransformParent(data);
     this.selectTab(this.tabs.ailments);
   }
   public GetEmergencyForm(data: any){
-    this.TransformEmergency(data);
+    if(data)
+      this.TransformEmergency(data);
     this.selectTab(this.tabs.billing);
   }
   public GetBillingForm(data: any){
+    if(data)
+      this.TransformBilling(data);
     this.selectTab(this.tabs.card);
   }
   public GetStudentCardForm(data: any){
-    this.TransformCard(data);
+    if(data)
+      this.TransformCard(data);
     this.SaveStudent();
   }
   private selectTab(tab: number){
-    this.staticTabs.tabs[tab] &&
+    this.staticTabs?.tabs[tab] &&
     (this.staticTabs.tabs[tab].active = true);
   }
   //Methos to API
   private async SaveStudent(){
     const result = await this.serviceStudent.StoreStudent(this.newStudent);
+    console.log(result);
     return result;
   }
   

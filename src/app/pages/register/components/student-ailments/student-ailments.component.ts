@@ -7,13 +7,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./student-ailments.component.scss']
 })
 export class StudentAilmentsComponent implements OnInit {
-  @Output() sendAilmentsForm = new EventEmitter<FormGroup>();
+  @Output() sendAilmentsForm = new EventEmitter<any>();
   @Output() goBack = new EventEmitter<void>();
   formAilments = new FormGroup({
-    isDeficit: new FormControl(null),
-    useMedicine: new FormControl(null),
+    has_deficit: new FormControl(null),
+    use_medicine: new FormControl(null),
     medicines: new FormControl(null),
-    informationAboutStudent: new FormControl(null),
+    info_vital: new FormControl(null),
   });
   constructor() { }
 
@@ -22,7 +22,7 @@ export class StudentAilmentsComponent implements OnInit {
 
   public next() {
     if(this.formAilments.valid){
-      this.sendAilmentsForm.emit(this.formAilments);
+      this.sendAilmentsForm.emit(this.formAilments.value);
     }else{
       this.formAilments.markAllAsTouched();
     }

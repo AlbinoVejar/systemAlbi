@@ -1,19 +1,23 @@
 <div class="container-fluid pt-4">
-  <form action="">
+  <form [formGroup]="formAilments">
     <div class="row">
       <div class="col-6">
         <div class="form-group">
           <label>¿Déficit de Atención e Hiperactividad?</label>
-          <select class="form-control">
-            <option value="">Seleccione Sí/No</option>
+          <select class="form-control" formControlName="has_deficit">
+            <option [value]="null">Seleccione Sí/No</option>
+            <option [value]="true">Sí</option>
+            <option [value]="false">No</option>
           </select>
         </div>
       </div>
       <div class="col-6">
         <div class="form-group">
           <label>¿Utiliza Medicamentos?</label>
-          <select class="form-control">
-            <option value="">Seleccione Sí/No</option>
+          <select class="form-control" formControlName="use_medicine">
+            <option [value]="null">Seleccione Sí/No</option>
+            <option [value]="true">Sí</option>
+            <option [value]="false">No</option>
           </select>
         </div>
       </div>
@@ -21,24 +25,24 @@
     <div class="row">
       <div class="col-12">
         <label>Escriba aquí los Medicamentos</label>
-        <textarea rows="4" class="form-control"></textarea>
+        <textarea rows="4" class="form-control" formControlName="medicines"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <label>Escriba aquí Información Importante que nos permita ayudar a su hijo</label>
-        <textarea rows="4" class="form-control"></textarea>
+        <textarea rows="4" class="form-control" formControlName="info_vital"></textarea>
       </div>
     </div>
   </form>
   <div class="row pt-2 d-flex justify-content-between">
     <div class="col-6">
-      <button class="btn btn-secondary">
+      <button class="btn btn-secondary" (click)="back()">
         Atras
       </button>
     </div>
     <div class="col-6 d-flex justify-content-end">
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" (click)="next()">
         Siguiente
       </button>
     </div>
