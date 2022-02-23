@@ -3,15 +3,20 @@
     <div class="header-body text-center mb-7">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
-          <h1 class="text-white">¡Bienvenido!</h1>
-          <p class="text-lead text-light">Registro de un nuevo Alumno.</p>
+          <div *ngIf="!completed">
+            <h1 class="text-white">¡Bienvenido!</h1>
+            <p class="text-lead text-light">Registro de un nuevo Alumno.</p>
+          </div>
+          <div *ngIf="completed">
+            <span class="display-1 text-white"><b>¡Alumno Registrado!</b></span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <!-- Page content -->
-<div class="container-fluid mt--6">
+<div class="container-fluid mt--6" *ngIf="!completed">
   <!-- Table -->
   <div class="row justify-content-center">
     <div class="col-lg-10 col-md-10">

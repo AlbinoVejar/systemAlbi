@@ -25,6 +25,7 @@ enum TABS{
 export class RegisterComponent implements OnInit {
   @ViewChild('staticTabs', {static: true}) staticTabs?: TabsetComponent;
   newStudent: Student = new Student();
+  completed: boolean = true;
   tabs = TABS;
   constructor(
     private serviceStudent: StudentService,
@@ -139,7 +140,7 @@ export class RegisterComponent implements OnInit {
   //Methos to API
   private async SaveStudent(){
     const result = await this.serviceStudent.StoreStudent(this.newStudent);
-    console.log(result);
+    result != null && (this.completed = true);
     return result;
   }
   
