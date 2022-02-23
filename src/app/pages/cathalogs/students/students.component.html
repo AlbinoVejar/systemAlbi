@@ -1,3 +1,55 @@
-<p>
-  students works!
-</p>
+<!-- <div class="header bg-gradient-gray">
+
+</div> -->
+
+<div class="container-fluid mt-7">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-header">
+          <span>Alumnos Registrados</span>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-flush">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Campus</th>
+                  <th>Sección</th>
+                  <th>Grado</th>
+                  <th>Nombre</th>
+                  <th>Edad</th>
+                  <th>Fecha</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of lstStudents">
+                  <td>{{student.id}}</td>
+                  <td>{{student.campus}}</td>
+                  <td>{{student.section}}</td>
+                  <td>{{student.grade}}</td>
+                  <td>{{student.last_name_first}} {{student.last_name_second}} {{student.names}}</td>
+                  <td>{{student.born_date ? student.born_date :'Sin Datos'}}</td>
+                  <td>{{student.creation_date | date}}</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-info" ngbTooltip="Ver" (click)="showModal()">
+                      <i class="ri-edit-line"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-success" ngbTooltip="Modificar">
+                      <i class="ri-eye-line"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" ngbTooltip="Eliminar">
+                      <i class="ri-delete-bin-line"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
