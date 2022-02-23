@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="btn btn-sm btn-outline-dark" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <i class="ri-close-line"></i>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Hello</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
