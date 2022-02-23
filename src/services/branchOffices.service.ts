@@ -17,7 +17,7 @@ export class BranchOfficesService extends CustomService {
     const result = await this.GetOne(id_student)
   }
   public async GetBranchOffices(){
-    const result = await this.GetAll();
+    const result = await this.GetAll("branches");
   }
   public async StoreBranchOffice(data){
     const result = await this.Store(data);

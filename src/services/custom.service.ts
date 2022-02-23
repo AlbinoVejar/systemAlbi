@@ -22,9 +22,15 @@ export class CustomService {
     }
   }
 
-  public async GetAll(){
+  public async GetAll(category?: string){
     try {
-      return await firstValueFrom(this.http.get(`${this.apiUrl}/${this.category}`));
+      return new Promise((resolve, rej) => {
+        this.http.get(`${this.apiUrl}/${category ? category : this.category}`).subscribe(result => {
+          resolve(result);
+        },error => {
+          rej(error);
+        });
+      });
     } catch (error) {
       return error;
     }

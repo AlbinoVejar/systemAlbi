@@ -17,8 +17,9 @@ export class StudentService extends CustomService {
     const result = await this.GetOne(student.id);
   }
 
-  public async GetStudents(student: Student){
-    const result = await this.GetAll();
+  public async GetStudents(){
+    const result = await this.GetAll("students");
+    return result;
   }
 
   public async StoreStudent(student: Student){

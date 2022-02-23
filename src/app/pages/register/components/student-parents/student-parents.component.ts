@@ -70,8 +70,8 @@ export class StudentParentsComponent implements OnInit {
 
   public next() {
     if(this.formParents.valid){
-      const result = this.removeValueNull();
-      this.sendParentsForm.emit(result);
+      // const result = this.removeValueNull();
+      this.sendParentsForm.emit(this.formParents.value);
     }else{
       this.formParents.markAllAsTouched();
     }
