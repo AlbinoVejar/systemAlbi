@@ -1,11 +1,171 @@
 <div class="modal-header">
-  <h4 class="modal-title">{{title}}</h4>
+  <h4 class="modal-title">{{modeEdit ? 'Editar' : 'Ver Detalles'}}</h4>
   <button type="button" class="btn btn-sm btn-outline-dark" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <i class="ri-close-line"></i>
   </button>
 </div>
 <div class="modal-body">
-  <p>Hello</p>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Ciclo Escolar:</label>
+          <input type="text" class="form-control" readonly [value]="student.yearSchool">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Campus:</label>
+          <input type="text" class="form-control" readonly [value]="student.campus">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Sección:</label>
+          <input type="text" class="form-control" readonly [value]="student.section">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Grado:</label>
+          <input type="text" class="form-control" readonly [value]="student.grade">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body pt-0">
+            <span class="h4">Datos del Alumno:</span>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Apellido Paterno:</label>
+                  <input type="text" class="form-control" readonly [value]="student.last_name_first">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Apellido Materno:</label>
+                  <input type="text" class="form-control" readonly [value]="student.last_name_second">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Nombres:</label>
+                  <input type="text" class="form-control" readonly [value]="student.names">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Sexo:</label>
+                  <input type="text" class="form-control" readonly [value]="student.sex">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label>Fecha de Nacimiento:</label>
+                <input type="text" class="form-control" readonly [value]="student.born_date">
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Lugar de Nacimiento:</label>
+                  <input type="text" class="form-control" readonly [value]="student.born_place">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Dirección:</label>
+                  <input type="text" class="form-control" readonly [value]="student.address">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Colonia:</label>
+                  <input type="text" class="form-control" readonly [value]="student.colony">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Código Postal:</label>
+                  <input type="text" class="form-control" readonly [value]="student.postal_code">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Télefono:</label>
+                  <input type="text" class="form-control" readonly [value]="student.phone">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>CURP:</label>
+                  <input type="text" class="form-control" readonly [value]="student.curp">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Estatura:</label>
+                  <input type="text" class="form-control" readonly [value]="student.height">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Peso:</label>
+                  <input type="text" class="form-control" readonly [value]="student.weight">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Tipo de Sangre:</label>
+                  <input type="text" class="form-control" readonly [value]="student.blood_type">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group mb-0">
+                  <label>¿Utiliza Lentes?</label>
+                  <input type="text" class="form-control" readonly [value]="student.glasses">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group mb-0">
+                  <label>¿Alergico?</label>
+                  <input type="text" class="form-control" readonly [value]="student.alergic">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-2">
+      <div class="col">
+        <div class="form-group">
+          <label><strong>¿Tiene hermanos?</strong></label>
+          <input type="text" class="form-control" readonly [value]="student.brothers_names">
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="hasBrothers">
+      <div class="col-6">
+        <div class="form-group">
+          <label>Nombre de la Escuela de Procedencia</label>
+          <input type="text" class="form-control" readonly [value]="student.last_school_name">
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label>Nombres de los Hermanos (En Caso de Pertenecer a Nuestra Escuela)</label>
+          <input type="text" class="form-control" readonly [value]="student.brothers_names">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>

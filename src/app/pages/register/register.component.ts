@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
     this.newStudent.blood_type = data.bloodType;
     this.newStudent.glasses = data.glasess;
     this.newStudent.alergic = data.alergic;
-    this.newStudent.last_school_name = data.lastSchoolName;
+    this.newStudent.last_school_names = data.lastSchoolName;
     this.newStudent.brothers_names = data.brothersNames;
     this.newStudent.id_branch = 1;
   }

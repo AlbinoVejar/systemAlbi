@@ -34,7 +34,7 @@
                   <td>{{student.born_date ? student.born_date :'Sin Datos'}}</td>
                   <td>{{student.creation_date | date}}</td>
                   <td>
-                    <button class="btn btn-sm btn-outline-info" ngbTooltip="Ver" (click)="showModal()">
+                    <button class="btn btn-sm btn-outline-info" ngbTooltip="Ver" (click)="ShowStudent(student)">
                       <i class="ri-edit-line"></i>
                     </button>
                     <button class="btn btn-sm btn-outline-success" ngbTooltip="Modificar">

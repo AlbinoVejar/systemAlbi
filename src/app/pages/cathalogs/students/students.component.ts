@@ -26,8 +26,20 @@ export class StudentsComponent implements OnInit {
     this.lstStudents = await result;
   }
 
-  public showModal(){
-    const modalRef = this.modalService.open(ModalStudentComponent, {centered: true, size: 'xl'});
-    modalRef.componentInstance.title = "Ver Detalles"
+  public showModal(student: Student, modeEdit = false){
+    const modalRef = this.modalService.open(ModalStudentComponent, {centered: true, size: 'xl', scrollable: true});
+    modalRef.componentInstance.modeEdit = modeEdit;
+    modalRef.componentInstance.student = student;
+  }
+
+  private async GetStudent(student: Student){
+    return await this.serviceStudent.GetStudent(student);
+  }
+
+  public async ShowStudent(student: Student){
+    if(student.id > 0){
+      const result = await this.GetStudent(student);
+      result && this.showModal(result);
+    }
   }
 }

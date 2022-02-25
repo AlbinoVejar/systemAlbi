@@ -33,7 +33,7 @@ export class Student {
   father: Parent;
   mother: Parent;
   id_branch: number;
-  last_school_name: string;
+  last_school_names: string;
   brothers_names: string;
   emergency: Array<Emergency>;
 }

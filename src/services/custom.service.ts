@@ -1,3 +1,4 @@
+import { Student } from './../models/student';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
@@ -16,7 +17,8 @@ export class CustomService {
 
   public async GetOne(id: number){
     try {
-      return await firstValueFrom(this.http.get(`${this.apiUrl}/${this.category}/${id}`));
+      const result = await firstValueFrom(this.http.get<Student>(`${this.apiUrl}/${this.category}/${id}`));
+      return result;
     } catch (error) {
       return error;
     }
