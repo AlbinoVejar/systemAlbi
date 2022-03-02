@@ -1,0 +1,172 @@
+<div class="container-fluid pt-4">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label>Ciclo Escolar:</label>
+          <input type="text" class="form-control" formControlName="yearSchool" readonly>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label>Campus:</label>
+          <input type="text" class="form-control" formControlName="campus" readonly>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label>Sección:</label>
+          <input type="text" class="form-control" formControlName="section" readonly>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label>Grado:</label>
+          <input type="text" class="form-control" formControlName="grade" readonly>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body pt-0">
+            <span class="h4">Datos del Alumno:</span>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Apellido Paterno:</label>
+                  <input type="text" class="form-control" formControlName="lastFirstName" readonly>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Apellido Materno:</label>
+                  <input type="text" class="form-control" formControlName="lastSecondName" readonly>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Nombres:</label>
+                  <input type="text" class="form-control" formControlName="names" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 pt-4">
+                <div class="form-group">
+                  <label>Sexo:</label>
+                  <input type="text" class="form-control" formControlName="sex" readonly>
+                </div>
+              </div>
+              <div class="col-8">
+                <span class="h4 pb-4">Fecha de Nacimiento:</span>
+                <input type="text" class="form-control" formControlName="bornDate" readonly>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <div class="form-group">
+                  <label>Lugar de Nacimiento:</label>
+                  <input type="text" class="form-control" formControlName="bornPlace" readonly>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-group">
+                  <label>Dirección:</label>
+                  <input type="text" class="form-control" formControlName="address" readonly>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label>Colonia:</label>
+                  <input type="text" class="form-control" formControlName="col" readonly>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label>Código Postal:</label>
+                  <input type="text" class="form-control" formControlName="postalCode" readonly>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label>Télefono:</label>
+                  <input type="text" class="form-control" formControlName="phone" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label>CURP:</label>
+                  <input type="text" class="form-control" formControlName="curp" readonly>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label>Estatura:</label>
+                  <input type="number" class="form-control" formControlName="height" readonly>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label>Peso:</label>
+                  <input type="number" class="form-control" formControlName="weight" readonly>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Tipo de Sangre:</label>
+                  <input type="text" class="form-control" formControlName="bloodType" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group mb-0">
+                  <label>¿Utiliza Lentes?</label>
+                  <input type="text" class="form-control" formControlName="glasses" readonly>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group mb-0">
+                  <label>¿Alergico?</label>
+                  <input type="text" class="form-control" formControlName="alergic" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-2">
+      <div class="col">
+        <div class="form-group">
+          <label><strong>¿Tiene hermanos?</strong></label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" (change)="hasBrothers = !hasBrothers">
+            <label class="form-check-label">
+              {{hasBrothers ? 'Sí' : 'No'}}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="hasBrothers">
+      <div class="col-6">
+        <div class="form-group">
+          <label>Nombre de la Escuela de Procedencia</label>
+          <input type="text" class="form-control" formControlName="lastSchoolName" readonly>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label>Nombres de los Hermanos (En Caso de Pertenecer a Nuestra Escuela)</label>
+          <input type="text" class="form-control" formControlName="brothersNames" readonly>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

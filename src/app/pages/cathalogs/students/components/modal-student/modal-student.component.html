@@ -1,8 +1,21 @@
 <div class="modal-header">
-  <h4 class="modal-title">{{modeEdit ? 'Editar' : 'Ver Detalles'}}</h4>
-  <button type="button" class="btn btn-sm btn-outline-dark" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <i class="ri-close-line"></i>
-  </button>
+  <div class="container-fluid">
+    <div class="row d-flex align-items-center">
+      <div class="col d-flex">
+        <h4 class="modal-title">{{modeEdit ? 'Editar' : 'Ver Detalles'}}</h4>
+      </div>
+      <div class="col d-flex justify-content-end">
+        <button class="btn btn-success">Editar</button>
+        <button class="btn btn-outline-danger">Eliminar</button>
+      </div>
+      <div class="col-1 d-flex justify-content-end">
+        <button type="button" class="btn btn-sm btn-outline-dark" aria-label="Close"
+          (click)="activeModal.dismiss('Cross click')">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="modal-body">
   <div class="container">
@@ -32,11 +45,14 @@
         </div>
       </div>
     </div>
+    <!-- #region MainData -->
     <div class="row">
       <div class="col-12">
         <div class="card">
+          <div class="card-header">
+            <b>Datos del Alumno:</b>
+          </div>
           <div class="card-body pt-0">
-            <span class="h4">Datos del Alumno:</span>
             <div class="row">
               <div class="col">
                 <div class="form-group">
@@ -139,34 +155,135 @@
                 </div>
               </div>
             </div>
+            <div class="row pt-2">
+              <div class="col">
+                <div class="form-group">
+                  <label><strong>¿Tiene hermanos?</strong></label>
+                  <input type="text" class="form-control" readonly [value]="student.brothers_names">
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="hasBrothers">
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Nombre de la Escuela de Procedencia</label>
+                  <input type="text" class="form-control" readonly [value]="student.last_school_name">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Nombres de los Hermanos (En Caso de Pertenecer a Nuestra Escuela)</label>
+                  <input type="text" class="form-control" readonly [value]="student.brothers_names">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row pt-2">
+    <!-- endregion MainData -->
+    <div class="row">
       <div class="col">
-        <div class="form-group">
-          <label><strong>¿Tiene hermanos?</strong></label>
-          <input type="text" class="form-control" readonly [value]="student.brothers_names">
-        </div>
-      </div>
-    </div>
-    <div class="row" *ngIf="hasBrothers">
-      <div class="col-6">
-        <div class="form-group">
-          <label>Nombre de la Escuela de Procedencia</label>
-          <input type="text" class="form-control" readonly [value]="student.last_school_name">
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="form-group">
-          <label>Nombres de los Hermanos (En Caso de Pertenecer a Nuestra Escuela)</label>
-          <input type="text" class="form-control" readonly [value]="student.brothers_names">
+        <div class="card">
+          <div class="card-header">
+            <b>Datos de los Padres</b>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Nombre Completo:</label>
+                  <input type="text" class="form-control" readonly [value]="student.father.names">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Teléfono de Casa:</label>
+                  <input type="text" class="form-control" readonly [value]="student.father.phone">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Celular:</label>
+                  <input type="text" class="form-control" readonly [value]="student.father.cellphone">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Dirección:</label>
+                  <input type="text" class="form-control" readonly [value]="student.father.address">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Colonia:</label>
+                  <input type="text" class="form-control" readonly [value]="student.father.colony">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Código Postal:</label>
+                  <input type="text" class="form-control" readonly [value]="student.father.postal_code">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label>País:</label>
+                  <input type="text" class="form-control" readonly [value]="student.father.country">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Estado:</label>
+                  <input type="text" class="form-control" readonly [value]="student.father.state">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label>Ciudad:</label>
+                  <input type="text" class="form-control" readonly [value]="student.father.city">
+                </div>
+              </div>
+            </div>
+            <div class="px-2 border border-light">
+              <h4><strong>Datos Laborales</strong></h4>
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Ocupación</label>
+                    <input type="text" class="form-control" readonly [value]="student.father.job">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Lugar de Trabajo</label>
+                    <input type="text" class="form-control" readonly [value]="student.father.job_address">
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="form-group">
+                    <label>Teléfono del Trabajo</label>
+                    <input type="text" class="form-control" readonly [value]="student.father.job_phone">
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="form-group">
+                    <label>Horario</label>
+                    <input type="text" class="form-control" readonly [value]="student.father.schedule">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Salir</button>
 </div>

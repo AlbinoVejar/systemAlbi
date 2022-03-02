@@ -10,6 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalStudentComponent implements OnInit {
   @Input() student: Student;
   @Input() modeEdit: boolean = false;
+  mainCollapse: boolean = false;
   constructor(
     public activeModal: NgbActiveModal
   ) { }

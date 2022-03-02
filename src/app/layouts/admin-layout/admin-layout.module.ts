@@ -12,8 +12,11 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
-import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { UpdateStudentComponent } from 'src/app/pages/cathalogs/students/update/update-student.component';
+import { RegisterComponentsModule } from '../shared/register-component.module';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    NgbModalModule
+    NgbModalModule,
+    NgbCollapseModule,
+    RegisterComponentsModule,
+    TabsModule,
   ],
   declarations: [
     DashboardComponent,
@@ -32,7 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     TablesComponent,
     IconsComponent,
     MapsComponent,
-    StudentsComponent
+    StudentsComponent,
+    UpdateStudentComponent,
   ]
 })
 

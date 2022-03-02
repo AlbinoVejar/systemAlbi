@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
+  public isCollapsed = true;
   constructor(location: Location,  private element: ElementRef, private router: Router) {
     this.location = location;
   }

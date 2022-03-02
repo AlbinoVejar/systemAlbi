@@ -1,0 +1,32 @@
+<div class="container-fluid pt-4">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label>Nombre Completo del Padre o Tutor</label>
+          <input type="text" class="form-control" formControlName="names">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label>Teléfono de Papá</label>
+          <input type="text" class="form-control" formControlName="phone_father">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Teléfono de Mamá</label>
+          <input type="text" class="form-control" formControlName="phone_mother">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Teléfono de los Abuelos</label>
+          <input type="text" class="form-control" formControlName="phone_grandparents">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

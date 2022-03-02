@@ -1,0 +1,32 @@
+<div class="row mt-7">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        <span class="display-4">Editar Estudiante</span>
+      </div>
+      <div class="card-body bg-white">
+        <tabset [justified]="true" type="pills" #staticTabs>
+          <tab heading="Datos Principales">
+            <inputs-main [form]="form" [info]="info"></inputs-main>
+          </tab>
+          <tab heading="Datos de los Padres">
+            <inputs-parents [form]="getFormGroup('father')" [title]="'Padre'" [info]="info"></inputs-parents>
+            <inputs-parents [form]="getFormGroup('mother')" [title]="'Madre'" [info]="info"></inputs-parents>
+          </tab>
+          <tab heading="Padecimientos">
+            <inputs-ailments [form]="getFormGroup('ailments')"></inputs-ailments>
+          </tab>
+          <!-- <tab heading="Datos de Emergencia">
+            <inputs-emergency [form]="getFormGroup()" *ngFor="let item of getFormGroup('emergency')"></inputs-emergency>
+          </tab> -->
+          <tab heading="Datos de Facturación">
+            <inputs-billing [form]="getFormGroup('billing')"></inputs-billing>
+          </tab>
+          <tab heading="Datos de Carnet">
+            <inputs-card [form]="getFormGroup('card')"></inputs-card>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

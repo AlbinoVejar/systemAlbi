@@ -1,0 +1,25 @@
+<form [formGroup]="form">
+  <div>
+    <span class="h3">Datos del Familiar #{{title}}</span>
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label>Nombre:</label>
+          <input type="text" class="form-control" formControlName="names">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Parentesco:</label>
+          <input type="text" class="form-control" formControlName="family_relationship">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Teléfono:</label>
+          <input type="text" class="form-control" formControlName="phone">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

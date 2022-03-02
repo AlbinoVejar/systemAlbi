@@ -1,0 +1,82 @@
+<div class="container-fluid pt-4">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label>Razón Social</label>
+          <input type="text" class="form-control" formControlName="social_name">
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label>R.F.C</label>
+          <input type="text" class="form-control" formControlName="rfc">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label>País</label>
+          <select class="form-control" formControlName="country">
+            <option value="">Seleccione un País</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Estado</label>
+          <select class="form-control" formControlName="state">
+            <option value="">Selecione un Estado</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Municipio</label>
+          <input type="text" class="form-control" formControlName="city">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label>Dirección</label>
+          <input type="text" class="form-control" formControlName="address">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Colonia</label>
+          <input type="text" class="form-control" formControlName="colony">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>No</label>
+          <input type="text" class="form-control" formControlName="address_number">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label>Localidad</label>
+          <input type="text" class="form-control" formControlName="locality">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Código Postal</label>
+          <input type="text" class="form-control" formControlName="postal_code">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Telefono</label>
+          <input type="text" class="form-control" formControlName="phone">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

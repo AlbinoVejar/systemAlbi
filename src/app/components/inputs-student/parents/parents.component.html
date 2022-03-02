@@ -1,0 +1,102 @@
+<form [formGroup]="form">
+  <div class="row py-1">
+    <div class="col-12">
+      <span class="h3">Datos del {{title}}:</span>
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label>Nombre Completo:</label>
+            <input type="text" class="form-control" formControlName="names">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Teléfono de Casa:</label>
+            <input type="text" class="form-control" formControlName="phone">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Celular:</label>
+            <input type="text" class="form-control" formControlName="cellphone">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label>Dirección:</label>
+            <input type="text" class="form-control" formControlName="address">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Colonia:</label>
+            <input type="text" class="form-control" formControlName="colony">
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Código Postal:</label>
+            <input type="text" class="form-control" formControlName="postal_code">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label>País:</label>
+            <select class="form-control" formControlName="country">
+              <option [value]="null">Seleccione un País</option>
+              <option [value]="item.name" *ngFor="let item of countries">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Estado:</label>
+            <select class="form-control" formControlName="state">
+              <option [value]="null">Seleccione un Estado</option>
+              <option [value]="item.name" *ngFor="let item of states">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label>Ciudad:</label>
+            <input type="text" class="form-control" formControlName="city">
+          </div>
+        </div>
+      </div>
+      <div class="px-2 border border-light">
+        <h4><strong>Datos Laborales</strong></h4>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label>Ocupación</label>
+              <input type="text" class="form-control" formControlName="job">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label>Lugar de Trabajo</label>
+              <input type="text" class="form-control" formControlName="job_address">
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <label>Teléfono del Trabajo</label>
+              <input type="text" class="form-control" formControlName="job_phone">
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <label>Horario</label>
+              <input type="text" class="form-control" formControlName="schedule">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

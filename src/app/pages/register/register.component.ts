@@ -25,7 +25,7 @@ enum TABS{
 export class RegisterComponent implements OnInit {
   @ViewChild('staticTabs', {static: true}) staticTabs?: TabsetComponent;
   newStudent: Student = new Student();
-  completed: boolean = true;
+  completed: boolean = false;
   tabs = TABS;
   constructor(
     private serviceStudent: StudentService,

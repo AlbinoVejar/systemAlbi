@@ -1,0 +1,30 @@
+<div class="container-fluid pt-4">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label>¿Déficit de Atención e Hiperactividad?</label>
+          <input type="text" class="form-control" readonly formControlName="has_deficit">
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label>¿Utiliza Medicamentos?</label>
+          <input type="text" class="form-control" readonly formControlName="use_medicine">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Escriba aquí los Medicamentos</label>
+        <textarea rows="4" class="form-control" readonly formControlName="medicines"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Escriba aquí Información Importante que nos permita ayudar a su hijo</label>
+        <textarea rows="4" class="form-control" readonly formControlName="info_vital"></textarea>
+      </div>
+    </div>
+  </form>
+</div>
