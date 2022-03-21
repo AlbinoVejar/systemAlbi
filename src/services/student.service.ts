@@ -13,8 +13,12 @@ export class StudentService extends CustomService {
     super("student", http);
   }
 
-  public async GetStudent(student: Student){
-    return await this.GetOne(student.id);
+  // public async GetStudent(student: Student){
+  //   return await this.GetOne(student.id);
+  // }
+
+  public async GetStudent(id: number){
+    return await this.GetOne(id);
   }
 
   public async GetStudents(){

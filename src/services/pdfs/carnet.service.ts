@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { jsPDF } from 'jspdf';
+import autoTable, { RowInput, ColumnInput } from 'jspdf-autotable';
 
 @Injectable({
   providedIn: 'root'
@@ -64,5 +66,7 @@ export class CarnetService {
     // const blob = new Blob([doc.output('blob')], { type: 'application/pdf' });
     // const blobUrl = URL.createObjectURL(blob);
     // pdfObject.embed(blobUrl, this.input);
+
+    doc.save("example-carnet.pdf");
   }
 }

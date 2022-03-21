@@ -49,13 +49,13 @@
               <div class="col-4">
                 <div class="form-group">
                   <label>Apellido Paterno:</label>
-                  <input type="text" class="form-control" formControlName="lastFirstName" oninput="this.value = this.value.toUpperCase()">
+                  <input type="text" class="form-control" formControlName="last_name_first" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-group">
                   <label>Apellido Materno:</label>
-                  <input type="text" class="form-control" formControlName="lastSecondName" oninput="this.value = this.value.toUpperCase()">
+                  <input type="text" class="form-control" formControlName="last_name_second" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-4">
@@ -113,7 +113,7 @@
               <div class="col-3">
                 <div class="form-group">
                   <label>Lugar de Nacimiento:</label>
-                  <input type="text" class="form-control" formControlName="bornPlace" oninput="this.value = this.value.toUpperCase()">
+                  <input type="text" class="form-control" formControlName="born_place" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-3">
@@ -131,7 +131,7 @@
               <div class="col-2">
                 <div class="form-group">
                   <label>Código Postal:</label>
-                  <input type="text" class="form-control" formControlName="postalCode" oninput="this.value = this.value.toUpperCase()">
+                  <input type="text" class="form-control" formControlName="postal_code" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-2">
@@ -163,7 +163,7 @@
               <div class="col-4">
                 <div class="form-group">
                   <label>Tipo de Sangre:</label>
-                  <select class="form-control" formControlName="bloodType">
+                  <select class="form-control" formControlName="blood_type">
                     <option [value]="null">Seleccione un Tipo de Sangre</option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>

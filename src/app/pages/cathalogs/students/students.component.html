@@ -1,7 +1,12 @@
 <!-- <div class="header bg-gradient-gray">
 
 </div> -->
-
+<ngx-spinner bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple">
+<p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
 <div class="container-fluid mt-7">
   <div class="row">
     <div class="col-12">
@@ -21,11 +26,12 @@
                   <th>Nombre</th>
                   <th>Edad</th>
                   <th>Fecha</th>
-                  <th>Acciones</th>
+                  <th class="text-center">Acciones</th>
+                  <th class="text-center">Imprimir</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let student of lstStudents">
+                <tr *ngFor="let student of lstStudents" class="h3 mb-0">
                   <td>{{student.id}}</td>
                   <td>{{student.campus}}</td>
                   <td>{{student.section}}</td>
@@ -35,13 +41,36 @@
                   <td>{{student.creation_date | date}}</td>
                   <td>
                     <button class="btn btn-sm btn-outline-info" ngbTooltip="Ver" (click)="ShowStudent(student)">
-                      <i class="ri-edit-line"></i>
+                      <span class="h3 mb-0 text-info d-flex align-items-center">
+                        <i class="ri-eye-line"></i>
+                        Ver
+                      </span>
                     </button>
-                    <button class="btn btn-sm btn-outline-success" ngbTooltip="Modificar">
-                      <i class="ri-eye-line"></i>
+                    <button class="btn btn-sm btn-outline-success" ngbTooltip="Editar" (click)="EditStudent(student.id)">
+                      <span class="h3 mb-0 text-success d-flex align-items-center">
+                        <i class="ri-edit-line"></i>
+                        Editar
+                      </span>
                     </button>
                     <button class="btn btn-sm btn-outline-danger" ngbTooltip="Eliminar">
-                      <i class="ri-delete-bin-line"></i>
+                      <span class="h3 mb-0 text-danger d-flex align-items-center">
+                        <i class="ri-delete-bin-line"></i>
+                        Eliminar
+                      </span>
+                    </button>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary" ngbTooltip="Imprimir Constancia" (click)="PrintConstancia()">
+                      <span class="h3 mb-0 text-primary d-flex align-items-center">
+                        <i class="ri-printer-line"></i>
+                        Constancia
+                      </span>
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary" ngbTooltip="Imprimir Carnet" (click)="PrintCarnet()">
+                      <span class="h3 mb-0 text-primary d-flex align-items-center">
+                        <i class="ri-printer-line"></i>
+                        Carnet
+                      </span>
                     </button>
                   </td>
                 </tr>

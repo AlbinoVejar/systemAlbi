@@ -10,6 +10,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -24,7 +25,8 @@ import { ComponentsModule } from './components/components.module';
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    TabsModule
+    TabsModule,
+    NgxSpinnerModule
   ],
   declarations: [
     AppComponent,

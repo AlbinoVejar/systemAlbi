@@ -1,8 +1,12 @@
-import { ModalStudentComponent } from './components/modal-student/modal-student.component';
+import { Router } from '@angular/router';
+import { ConstanciaService } from './../../../../services/pdfs/constancia.service';
+import { CarnetService } from './../../../../services/pdfs/carnet.service';
+import { ModalStudentComponent } from '../../../modals/modal-student/modal-student.component';
 import { Student } from './../../../../models/student';
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/services/student.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-students',
@@ -13,7 +17,11 @@ export class StudentsComponent implements OnInit {
   lstStudents: Array<Student> = [];
   constructor(
     private serviceStudent: StudentService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private carnetService: CarnetService,
+    private constanciaService: ConstanciaService,
+    private spinner: NgxSpinnerService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -22,7 +30,6 @@ export class StudentsComponent implements OnInit {
 
   private async GetStudents(){
     const result = await this.serviceStudent.GetStudents();
-    console.log(result);
     this.lstStudents = await result;
   }
 
@@ -33,7 +40,7 @@ export class StudentsComponent implements OnInit {
   }
 
   private async GetStudent(student: Student){
-    return await this.serviceStudent.GetStudent(student);
+    return await this.serviceStudent.GetStudent(student.id);
   }
 
   public async ShowStudent(student: Student){
@@ -41,5 +48,17 @@ export class StudentsComponent implements OnInit {
       const result = await this.GetStudent(student);
       result && this.showModal(result);
     }
+  }
+
+  public PrintCarnet(){
+    this.carnetService.createCarnet();
+  }
+
+  public PrintConstancia(){
+    this.constanciaService.createFolio();
+  }
+
+  EditStudent(id: number){
+    this.router.navigateByUrl(`/alumno/${id}`);
   }
 }
