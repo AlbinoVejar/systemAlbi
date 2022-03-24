@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
+import { CathalogService } from 'src/services/cathalog.service';
 import { StudentService } from 'src/services/student.service';
 
 @Component({
@@ -26,7 +28,7 @@ export class UpdateStudentComponent implements OnInit {
     }),
     born_place: new FormControl(null),
     address: new FormControl(null),
-    col: new FormControl(null),
+    colony: new FormControl(null),
     postal_code: new FormControl(null),
     phone: new FormControl(null),
     curp: new FormControl(null),
@@ -121,10 +123,7 @@ export class UpdateStudentComponent implements OnInit {
   years: Array<number> = [];
   countries: Array<any> = [];
   states: Array<any> = [];
-  info = {
-    countries: this.countries,
-    states: this.states
-  }
+  info = {}
   constructor(
     private arouter: ActivatedRoute,
     private router: Router,
@@ -148,9 +147,16 @@ export class UpdateStudentComponent implements OnInit {
 
   async getStudent(id: number){
     const data = await this.sStudent.GetStudent(id);
-    if(data){
-      console.log(await data);
+    if(await data){
       this.form.patchValue(await data);
+      const {born_date} = await data;
+      const day = this.form.get("born_date").get("day");
+      const month = this.form.get("born_date").get("month");
+      const year = this.form.get("born_date").get("year");
+      const [_year,_month,_day] = born_date.split("/");
+      day.setValue(_day);
+      month.setValue(_month);
+      year.setValue(_year);
     }
   }
 }

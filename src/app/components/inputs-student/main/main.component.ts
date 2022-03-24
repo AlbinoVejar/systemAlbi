@@ -1,6 +1,7 @@
 import { FormGroup } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { CathalogService } from 'src/services/cathalog.service';
 
 @Component({
   selector: 'inputs-main',
@@ -9,7 +10,6 @@ import * as moment from 'moment';
 })
 export class MainComponent implements OnInit {
   @Input() form: FormGroup;
-  @Input() info: any = [];
   hasBrothers: boolean = false;
   campus: Array<any> = [];
   grades: Array<any> = [];
@@ -18,16 +18,26 @@ export class MainComponent implements OnInit {
   day: Array<number> = [];
   month: Array<number> = [];
   years: Array<number> = [];
-  constructor() { }
+  constructor(
+    private serviceCathalog: CathalogService,
+  ) { }
 
-  ngOnInit() {
-    this.campus = this.info.campus;
-    this.grades = this.info.grades;
-    this.sections = this.info.sections;
-    this.yearsSchool = this.info.yearsSchool;
-    this.day = this.info.day;
-    this.month = this.info.month;
-    this.years = this.info.years;
+  async ngOnInit() {
+    await this.initComponent();
+  }
+
+  async initComponent(){
+    await this.GetCampus();
+    await this.GetGrades();
+    await this.GetSections();
+    await this.GetYears();
+    for (let i = 1985; i <= 2023; i++) {
+      this.years.push(i)
+    };
+    for (let i = 1; i <= 12; i++) {
+      this.month.push(i);
+    }
+    this.addDays(30);
   }
 
   private addDays(value: number): void{
@@ -60,9 +70,27 @@ export class MainComponent implements OnInit {
     }
   }
   private get yearForm() {
-    return this.form.get('bornDate').get('year');
+    return this.form.get('born_date').get('year');
   }
   private get monthForm() {
-    return this.form.get('bornDate').get('month');
+    return this.form.get('born_date').get('month');
+  }
+
+  //API Functions
+  private async GetCampus(){
+    const result = await this.serviceCathalog.GetCampus();
+    this.campus = await result;
+  }
+  private async GetGrades(){
+    const result = await this.serviceCathalog.GetGrades();
+    this.grades = await result;
+  }
+  private async GetSections(){
+    const result = await this.serviceCathalog.GetSections();
+    this.sections = await result;
+  }
+  private async GetYears(){
+    const result = await this.serviceCathalog.GetYears();
+    this.yearsSchool = await result;
   }
 }

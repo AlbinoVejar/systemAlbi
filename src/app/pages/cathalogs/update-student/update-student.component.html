@@ -2,12 +2,17 @@
   <div class="col">
     <div class="card">
       <div class="card-header">
-        <span class="display-4">Editar Estudiante</span>
+        <div class="d-flex justify-content-between">
+          <span class="display-4">Editar Estudiante</span>
+          <button class="btn btn-success">
+            <i class="ri-save-line"></i>
+            Guardar Cambios</button>
+        </div>
       </div>
       <div class="card-body bg-white">
         <tabset [justified]="true" type="pills" #staticTabs>
           <tab heading="Datos Principales">
-            <inputs-main [form]="form" [info]="info"></inputs-main>
+            <inputs-main [form]="form"></inputs-main>
           </tab>
           <tab heading="Datos de los Padres">
             <inputs-parents [form]="getFormGroup('father')" [title]="'Padre'" [info]="info"></inputs-parents>

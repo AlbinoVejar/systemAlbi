@@ -23,7 +23,7 @@ enum TABS{
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild('staticTabs', {static: true}) staticTabs?: TabsetComponent;
+  @ViewChild('staticTabs', {static: false}) staticTabs?: TabsetComponent;
   newStudent: Student = new Student();
   completed: boolean = false;
   tabs = TABS;

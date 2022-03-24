@@ -76,7 +76,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col-8" formGroupName="bornDate">
+              <div class="col-8" formGroupName="born_date">
                 <span class="h4 pb-4">Fecha de Nacimiento:</span>
                 <div class="row">
                   <div class="col-4">
@@ -125,7 +125,7 @@
               <div class="col-2">
                 <div class="form-group">
                   <label>Colonia:</label>
-                  <input type="text" class="form-control" formControlName="col" oninput="this.value = this.value.toUpperCase()">
+                  <input type="text" class="form-control" formControlName="colony" oninput="this.value = this.value.toUpperCase()">
                 </div>
               </div>
               <div class="col-2">
@@ -181,8 +181,8 @@
                   <label>¿Utiliza Lentes?</label>
                   <select class="form-control" formControlName="glasses">
                     <option [value]="null">Seleccione una opción</option>
-                    <option [value]="1">Sí</option>
-                    <option [value]="0">No</option>
+                    <option [value]="true">Sí</option>
+                    <option [value]="false">No</option>
                   </select>
                 </div>
               </div>
@@ -191,8 +191,8 @@
                   <label>¿Alergico?</label>
                   <select class="form-control" formControlName="alergic">
                     <option [value]="null">Seleccione una opción</option>
-                    <option [value]="1">Sí</option>
-                    <option [value]="0">No</option>
+                    <option [value]="true">Sí</option>
+                    <option [value]="false">No</option>
                   </select>
                 </div>
               </div>
