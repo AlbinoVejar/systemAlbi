@@ -26,13 +26,15 @@ export class CustomService {
 
   public async GetAll(category?: string){
     try {
-      return new Promise((resolve, rej) => {
-        this.http.get(`${this.apiUrl}/${category ? category : this.category}`).subscribe(result => {
-          resolve(result);
-        },error => {
-          rej(error);
-        });
-      });
+      const result = await firstValueFrom(this.http.get(`${this.apiUrl}/${category ? category : this.category}`));
+      // return new Promise((resolve, rej) => {
+      //   this.http.get(`${this.apiUrl}/${category ? category : this.category}`).subscribe(result => {
+      //     resolve(result);
+      //   },error => {
+      //     rej(error);
+      //   });
+      // });
+      return result;
     } catch (error) {
       return error;
     }

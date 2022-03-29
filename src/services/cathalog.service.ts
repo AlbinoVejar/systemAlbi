@@ -38,4 +38,8 @@ export class CathalogService{
     const cs = new CustomService("states", this.http);
     return await cs.GetAll();
   }
+  public async GetCatalogs(){
+    const result = new CustomService("catalogs", this.http);
+    return await result.GetAll();
+  }
 }

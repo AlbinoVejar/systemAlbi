@@ -21,8 +21,8 @@ export class ParentInputsComponent implements OnInit {
   }
 
   private InitData(){
-    this.GetCountries();
-    this.GetStates();
+    this.GetCountries().then();
+    this.GetStates().then();
   }
 
   private async GetCountries(){

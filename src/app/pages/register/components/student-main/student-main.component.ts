@@ -54,7 +54,7 @@ export class StudentMainComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.InitData();
+    this.InitData().then(result => {});
   }
   ngOnDestroy(): void {
     this.mainForm.reset();
@@ -67,11 +67,8 @@ export class StudentMainComponent implements OnInit, OnDestroy {
       this.mainForm.markAllAsTouched();
     }
   }
-  private InitData(): void{
-    this.GetCampus();
-    this.GetGrades();
-    this.GetSections();
-    this.GetYears();
+  private async InitData(){
+    await this.GetCatalogs();
     for (let i = 1985; i <= 2023; i++) {
       this.years.push(i)
     };
@@ -125,6 +122,10 @@ export class StudentMainComponent implements OnInit, OnDestroy {
   private async GetYears(){
     const result = await this.serviceCathalog.GetYears();
     this.yearsSchool = result;
+  }
+  private async GetCatalogs(){
+    const result = await this.serviceCathalog.GetCatalogs();
+    console.log(await result)
   }
   //
   private get GetMainForm(){
