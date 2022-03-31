@@ -7,6 +7,8 @@ import { Parent } from 'src/models/parent';
 import { Emergency } from 'src/models/emergency';
 import { Billing } from 'src/models/billing';
 import { Card } from 'src/models/card';
+import { CathalogService } from 'src/services/cathalog.service';
+import { CustomStateService } from 'src/services/customState.service';
 
 enum TABS{
   main = 0,
@@ -29,10 +31,13 @@ export class RegisterComponent implements OnInit {
   tabs = TABS;
   constructor(
     private serviceStudent: StudentService,
+    private serviceCatalogs: CathalogService,
+    private serviceStorage: CustomStateService
   ) {
   }
 
   ngOnInit() {
+    this.initStateCatalogs();
   }
 
   public goBack(tab: number){
@@ -137,11 +142,26 @@ export class RegisterComponent implements OnInit {
     this.staticTabs?.tabs[tab] &&
     (this.staticTabs.tabs[tab].active = true);
   }
+
+  private initStateCatalogs(){
+    this.GetCatalogs().then(result => {
+      const {grades, years, campus, countries, states, sections} = result;
+      this.serviceStorage.SaveItem("grades",grades);
+      this.serviceStorage.SaveItem("years",years);
+      this.serviceStorage.SaveItem("campus",campus);
+      this.serviceStorage.SaveItem("countries",countries);
+      this.serviceStorage.SaveItem("states",states);
+      this.serviceStorage.SaveItem("sections",sections);
+    });
+  }
   //Methos to API
   private async SaveStudent(){
     const result = await this.serviceStudent.StoreStudent(this.newStudent);
     result != null && (this.completed = true);
     return result;
   }
-  
+  private async GetCatalogs(){
+    const result = await this.serviceCatalogs.GetCatalogs();
+    return await result;
+  }
 }
