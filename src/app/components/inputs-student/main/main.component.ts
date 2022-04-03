@@ -2,6 +2,7 @@ import { FormGroup } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { CathalogService } from 'src/services/cathalog.service';
+import { CustomStateService } from 'src/services/customState.service';
 
 @Component({
   selector: 'inputs-main',
@@ -20,17 +21,19 @@ export class MainComponent implements OnInit {
   years: Array<number> = [];
   constructor(
     private serviceCathalog: CathalogService,
+    private serviceLocal: CustomStateService
   ) { }
 
   async ngOnInit() {
-    await this.initComponent();
+    this.initComponent();
   }
 
-  async initComponent(){
-    await this.GetCampus();
-    await this.GetGrades();
-    await this.GetSections();
-    await this.GetYears();
+  initComponent(){
+    const {campus, years, grades, sections} = this.serviceLocal.GetState();
+    this.campus = campus;
+    this.sections = sections;
+    this.yearsSchool = years;
+    this.grades = grades;
     for (let i = 1985; i <= 2023; i++) {
       this.years.push(i)
     };
@@ -74,23 +77,5 @@ export class MainComponent implements OnInit {
   }
   private get monthForm() {
     return this.form.get('born_date').get('month');
-  }
-
-  //API Functions
-  private async GetCampus(){
-    const result = await this.serviceCathalog.GetCampus();
-    this.campus = await result;
-  }
-  private async GetGrades(){
-    const result = await this.serviceCathalog.GetGrades();
-    this.grades = await result;
-  }
-  private async GetSections(){
-    const result = await this.serviceCathalog.GetSections();
-    this.sections = await result;
-  }
-  private async GetYears(){
-    const result = await this.serviceCathalog.GetYears();
-    this.yearsSchool = await result;
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
+import { Student } from 'src/models/student';
 import { CathalogService } from 'src/services/cathalog.service';
 import { StudentService } from 'src/services/student.service';
 
@@ -110,7 +111,29 @@ export class UpdateStudentComponent implements OnInit {
     // #endregion
 
     // #region Emergency
-    emergency: new FormGroup({}),
+    emergency: new FormArray([
+      new FormGroup({
+        id: new FormControl(null),
+        id_student: new FormControl(null),
+        names: new FormControl(''),
+        family_relationship: new FormControl(''),
+        phone: new FormControl(''),
+      }),
+      new FormGroup({
+        id: new FormControl(null),
+        id_student: new FormControl(null),
+        names: new FormControl(''),
+        family_relationship: new FormControl(''),
+        phone: new FormControl(''),
+      }),
+      new FormGroup({
+        id: new FormControl(null),
+        id_student: new FormControl(null),
+        names: new FormControl(''),
+        family_relationship: new FormControl(''),
+        phone: new FormControl(''),
+      })
+    ]),
     // #endregion
   });
 
@@ -145,6 +168,11 @@ export class UpdateStudentComponent implements OnInit {
     return this.form.get(group);
   }
 
+  getFormArray(){
+    const arr: FormArray = this.form.get("emergency")['controls'];
+    return arr;
+  }
+
   async getStudent(id: number){
     const data = await this.sStudent.GetStudent(id);
     if(await data){
@@ -157,6 +185,18 @@ export class UpdateStudentComponent implements OnInit {
       day.setValue(_day);
       month.setValue(_month);
       year.setValue(_year);
+    }
+  }
+
+  async UpdateStudent(){
+    if(this.form.valid){
+      const data = this.form.value;
+      const date = `${data.born_date.year}/${data.born_date.month}/${data.born_date.day}`;
+      const body: Student = data;
+      body.born_date = date;
+      const result = await this.sStudent.UpdateStudent(body);
+      this.form.reset();
+      this.getStudent(body.id);
     }
   }
 }

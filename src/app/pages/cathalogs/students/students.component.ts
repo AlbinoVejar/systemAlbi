@@ -50,15 +50,24 @@ export class StudentsComponent implements OnInit {
     }
   }
 
-  public PrintCarnet(){
-    this.carnetService.createCarnet();
+  public PrintCarnet(student: Student){
+    this.serviceStudent.GetStudent(student.id).then((result: Student) => {
+      this.carnetService.createCarnet(result);
+    });
   }
 
-  public PrintConstancia(){
-    this.constanciaService.createFolio();
+  public PrintConstancia(student: Student){
+    this.serviceStudent.GetStudent(student.id).then((result: Student) => {
+      this.constanciaService.createFolio(result);
+    })
   }
 
   EditStudent(id: number){
     this.router.navigateByUrl(`/alumno/${id}`);
+  }
+
+  async DeleteStudent(id:number){
+    await this.serviceStudent.DeleteStudent(id);
+    await this.GetStudents();
   }
 }

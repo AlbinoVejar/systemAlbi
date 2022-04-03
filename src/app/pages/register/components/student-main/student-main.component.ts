@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/cor
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CathalogService } from 'src/services/cathalog.service';
 import * as moment from 'moment';
+import { CustomStateService } from 'src/services/customState.service';
 
 @Component({
   selector: 'app-student-main',
@@ -51,10 +52,11 @@ export class StudentMainComponent implements OnInit, OnDestroy {
   years: Array<number> = [];
   constructor(
     private serviceCathalog: CathalogService,
+    private serviceStorage: CustomStateService
   ) { }
 
   ngOnInit() {
-    this.InitData().then(result => {});
+    this.InitData();
   }
   ngOnDestroy(): void {
     this.mainForm.reset();
@@ -67,8 +69,8 @@ export class StudentMainComponent implements OnInit, OnDestroy {
       this.mainForm.markAllAsTouched();
     }
   }
-  private async InitData(){
-    await this.GetCatalogs();
+  private InitData(){
+    this.GetCatalogs();
     for (let i = 1985; i <= 2023; i++) {
       this.years.push(i)
     };
@@ -107,25 +109,12 @@ export class StudentMainComponent implements OnInit, OnDestroy {
     }
   }
   //API Functions
-  private async GetCampus(){
-    const result = await this.serviceCathalog.GetCampus();
-    this.campus = result;
-  }
-  private async GetGrades(){
-    const result = await this.serviceCathalog.GetGrades();
-    this.grades = result;
-  }
-  private async GetSections(){
-    const result = await this.serviceCathalog.GetSections();
-    this.sections = result;
-  }
-  private async GetYears(){
-    const result = await this.serviceCathalog.GetYears();
-    this.yearsSchool = result;
-  }
   private async GetCatalogs(){
-    const result = await this.serviceCathalog.GetCatalogs();
-    console.log(await result)
+    const {campus, years, grades, sections} = this.serviceStorage.GetState();
+    this.campus = campus;
+    this.yearsSchool = years;
+    this.grades = grades;
+    this.sections = sections;
   }
   //
   private get GetMainForm(){

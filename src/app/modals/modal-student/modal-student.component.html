@@ -75,7 +75,7 @@
               <div class="col">
                 <div class="form-group">
                   <label>Sexo:</label>
-                  <input type="text" class="form-control" readonly [value]="student.sex">
+                  <input type="text" class="form-control" readonly [value]="student.sex == 'M' ? 'MUJER' : 'HOMBRE'">
                 </div>
               </div>
             </div>
@@ -145,13 +145,13 @@
               <div class="col">
                 <div class="form-group mb-0">
                   <label>¿Utiliza Lentes?</label>
-                  <input type="text" class="form-control" readonly [value]="student.glasses">
+                  <input type="text" class="form-control" readonly [value]="student.glasses ? 'SÍ' : 'NO'">
                 </div>
               </div>
               <div class="col">
                 <div class="form-group mb-0">
                   <label>¿Alergico?</label>
-                  <input type="text" class="form-control" readonly [value]="student.alergic">
+                  <input type="text" class="form-control" readonly [value]="student.alergic ? 'SÍ' : 'NO'">
                 </div>
               </div>
             </div>
@@ -159,7 +159,7 @@
               <div class="col">
                 <div class="form-group">
                   <label><strong>¿Tiene hermanos?</strong></label>
-                  <input type="text" class="form-control" readonly [value]="student.brothers_names">
+                  <input type="text" class="form-control" readonly [value]="student.brothers_names ? 'SÍ' : 'NO'">
                 </div>
               </div>
             </div>

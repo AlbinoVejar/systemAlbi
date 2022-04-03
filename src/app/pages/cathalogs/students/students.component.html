@@ -52,7 +52,7 @@ type="ball-scale-multiple">
                         Editar
                       </span>
                     </button>
-                    <button class="btn btn-sm btn-outline-danger" ngbTooltip="Eliminar">
+                    <button class="btn btn-sm btn-outline-danger" ngbTooltip="Eliminar" (click)="DeleteStudent(student.id)">
                       <span class="h3 mb-0 text-danger d-flex align-items-center">
                         <i class="ri-delete-bin-line"></i>
                         Eliminar
@@ -60,13 +60,13 @@ type="ball-scale-multiple">
                     </button>
                   </td>
                   <td>
-                    <button class="btn btn-sm btn-outline-primary" ngbTooltip="Imprimir Constancia" (click)="PrintConstancia()">
+                    <button class="btn btn-sm btn-outline-primary" ngbTooltip="Imprimir Constancia" (click)="PrintConstancia(student)">
                       <span class="h3 mb-0 text-primary d-flex align-items-center">
                         <i class="ri-printer-line"></i>
                         Constancia
                       </span>
                     </button>
-                    <button class="btn btn-sm btn-outline-primary" ngbTooltip="Imprimir Carnet" (click)="PrintCarnet()">
+                    <button class="btn btn-sm btn-outline-primary" ngbTooltip="Imprimir Carnet" (click)="PrintCarnet(student)">
                       <span class="h3 mb-0 text-primary d-flex align-items-center">
                         <i class="ri-printer-line"></i>
                         Carnet

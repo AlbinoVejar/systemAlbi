@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CathalogService } from 'src/services/cathalog.service';
+import { CustomStateService } from 'src/services/customState.service';
 
 @Component({
   selector: 'app-student-billing',
@@ -26,7 +27,8 @@ export class StudentBillingComponent implements OnInit {
   countries: Array<any> = [];
   states: Array<any> = [];
   constructor(
-    private serviceCathalogs: CathalogService
+    private serviceCathalogs: CathalogService,
+    private serviceStorage: CustomStateService,
   ) { }
 
   ngOnInit() {
@@ -34,18 +36,9 @@ export class StudentBillingComponent implements OnInit {
   }
 
   private InitData(){
-    this.GetCountries();
-    this.GetStates();
-  }
-
-  private async GetCountries(){
-    const result = await this.serviceCathalogs.GetCountries();
-    this.countries = result;
-  }
-
-  private async GetStates(){
-    const result = await this.serviceCathalogs.GetStates();
-    this.states = result;
+    const {countries, states} = this.serviceStorage.GetState();
+    this.countries = countries;
+    this.states = states;
   }
 
   public next(){

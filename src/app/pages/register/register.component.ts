@@ -10,7 +10,7 @@ import { Card } from 'src/models/card';
 import { CathalogService } from 'src/services/cathalog.service';
 import { CustomStateService } from 'src/services/customState.service';
 
-enum TABS{
+enum TABS {
   main = 0,
   parents = 1,
   ailments = 2,
@@ -25,7 +25,7 @@ enum TABS{
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild('staticTabs', {static: false}) staticTabs?: TabsetComponent;
+  @ViewChild('staticTabs', { static: false }) staticTabs?: TabsetComponent;
   newStudent: Student = new Student();
   completed: boolean = false;
   tabs = TABS;
@@ -37,13 +37,12 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initStateCatalogs();
   }
 
-  public goBack(tab: number){
+  public goBack(tab: number) {
     this.selectTab(tab - 1);
   }
-  private TransformMainForm(data: any){
+  private TransformMainForm(data: any) {
     const date = `${data.bornDate.year}/${data.bornDate.month}/${data.bornDate.day}`;
     this.newStudent.yearSchool = data.yearSchool;
     this.newStudent.campus = data.campus;
@@ -62,30 +61,31 @@ export class RegisterComponent implements OnInit {
     this.newStudent.height = data.height;
     this.newStudent.weight = data.weight;
     this.newStudent.blood_type = data.bloodType;
-    this.newStudent.glasses = data.glasess;
+    this.newStudent.sex = data.sex;
+    this.newStudent.glasses = data.glasses;
     this.newStudent.alergic = data.alergic;
     this.newStudent.last_school_names = data.lastSchoolName;
     this.newStudent.brothers_names = data.brothersNames;
     this.newStudent.id_branch = 1;
   }
-  private TransformAilemnt(data: any){
+  private TransformAilemnt(data: any) {
     let objAilment = new Ailments();
     objAilment = data;
-    
+
     this.newStudent.ailments = objAilment;
   }
-  private TransformParent(data: any){
+  private TransformParent(data: any) {
     let objParentFather = new Parent();
     let objParentMother = new Parent();
     //Father
     objParentFather = data.fatherData;
     //Mother
     objParentMother = data.motherData;
-    
+
     this.newStudent.father = objParentFather;
     this.newStudent.mother = objParentMother;
   }
-  private TransformEmergency(data: any){
+  private TransformEmergency(data: any) {
     this.newStudent.emergency == undefined && (this.newStudent.emergency = []);
     let objEmergency1 = new Emergency();
     let objEmergency2 = new Emergency();
@@ -94,74 +94,59 @@ export class RegisterComponent implements OnInit {
     objEmergency1 = data.family1;
     objEmergency2 = data.family2;
     objEmergency3 = data.family3;
-    this.newStudent.emergency.push(objEmergency1,objEmergency2, objEmergency3);
+    this.newStudent.emergency.push(objEmergency1, objEmergency2, objEmergency3);
   }
-  private TransformBilling(data: any){
+  private TransformBilling(data: any) {
     let objBilling = new Billing();
     objBilling = data;
     this.newStudent.billing = objBilling;
   }
-  private TransformCard(data: any){
+  private TransformCard(data: any) {
     let objCard = new Card();
     objCard = data;
     this.newStudent.card = objCard;
   }
   //Gets Forms
-  public GetMainForm(data: any){
-    if(data){
+  public GetMainForm(data: any) {
+    if (data) {
       this.TransformMainForm(data);
       this.selectTab(this.tabs.parents);
     }
   }
-  public GetAilmentsForm(data: any){
-    if(data)
+  public GetAilmentsForm(data: any) {
+    if (data)
       this.TransformAilemnt(data);
     this.selectTab(this.tabs.emergency);
   }
-  public GetParentsForm(data: any){
-    if(data)
+  public GetParentsForm(data: any) {
+    if (data)
       this.TransformParent(data);
     this.selectTab(this.tabs.ailments);
   }
-  public GetEmergencyForm(data: any){
-    if(data)
+  public GetEmergencyForm(data: any) {
+    if (data)
       this.TransformEmergency(data);
     this.selectTab(this.tabs.billing);
   }
-  public GetBillingForm(data: any){
-    if(data)
+  public GetBillingForm(data: any) {
+    if (data)
       this.TransformBilling(data);
     this.selectTab(this.tabs.card);
   }
-  public GetStudentCardForm(data: any){
-    if(data)
+  public GetStudentCardForm(data: any) {
+    if (data)
       this.TransformCard(data);
     this.SaveStudent();
   }
-  private selectTab(tab: number){
+  private selectTab(tab: number) {
     this.staticTabs?.tabs[tab] &&
-    (this.staticTabs.tabs[tab].active = true);
+      (this.staticTabs.tabs[tab].active = true);
   }
 
-  private initStateCatalogs(){
-    this.GetCatalogs().then(result => {
-      const {grades, years, campus, countries, states, sections} = result;
-      this.serviceStorage.SaveItem("grades",grades);
-      this.serviceStorage.SaveItem("years",years);
-      this.serviceStorage.SaveItem("campus",campus);
-      this.serviceStorage.SaveItem("countries",countries);
-      this.serviceStorage.SaveItem("states",states);
-      this.serviceStorage.SaveItem("sections",sections);
-    });
-  }
   //Methos to API
-  private async SaveStudent(){
+  private async SaveStudent() {
     const result = await this.serviceStudent.StoreStudent(this.newStudent);
     result != null && (this.completed = true);
     return result;
-  }
-  private async GetCatalogs(){
-    const result = await this.serviceCatalogs.GetCatalogs();
-    return await result;
   }
 }

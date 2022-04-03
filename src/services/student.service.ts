@@ -34,10 +34,13 @@ export class StudentService extends CustomService {
   }
 
   public async UpdateStudent(student: Student){
+    console.log(student);
     const result = await this.Update(student.id, student);
+    return await result;
   }
 
-  public async DeleteStudent(student: Student){
-    const result = await this.Delete(student.id);
+  public async DeleteStudent(id: number){
+    const result = await this.Delete(id);
+    return await result;
   }
 }

@@ -3,6 +3,7 @@ export class Parent {
   names: string;
   phone: string;
   cellphone: string;
+  email: string;
   address: string;
   colony: string;
   postal_code: string;

@@ -1,5 +1,6 @@
 import { FormGroup } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
+import { CustomStateService } from 'src/services/customState.service';
 
 @Component({
   selector: 'inputs-parents',
@@ -9,14 +10,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ParentsComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() title: string;
-  @Input() info: any;
   countries: Array<any> = [];
   states: Array<any> = [];
-  constructor() { }
+  constructor(
+    private serviceStorage: CustomStateService
+  ) { }
 
   ngOnInit() {
-    this.countries = this.info.countries;
-    this.states = this.info.states;
+    this.initData();
+  }
+
+  private initData(){
+    const {states, countries} = this.serviceStorage.GetState();
+    this.countries = countries;
+    this.states = states;
   }
 
 }

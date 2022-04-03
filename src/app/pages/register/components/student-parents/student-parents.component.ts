@@ -47,27 +47,6 @@ export class StudentParentsComponent implements OnInit {
   ngOnInit() {
   }
 
-  private removeValueNull(){
-    let result = {};
-    const objF = this.formParents.get("fatherData").value;
-    const objM = this.formParents.get("motherData").value;
-    let index = 0;
-    for (var group of [objF, objM]) {
-      for (var key in group) {
-        if(group[key] == null){
-          delete group[key];
-        }
-      }
-      if(index == 0){
-        !_.isEmpty(group) && (result["fatherData"] = group);
-      }else{
-        !_.isEmpty(group) && (result["motherData"] = group);
-      }
-      index++;
-    }
-    return _.isEmpty(result) ? null : result;
-  }
-
   public next() {
     if(this.formParents.valid){
       // const result = this.removeValueNull();

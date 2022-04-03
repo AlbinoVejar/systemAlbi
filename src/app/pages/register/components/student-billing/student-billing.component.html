@@ -19,7 +19,8 @@
         <div class="form-group">
           <label>País</label>
           <select class="form-control" formControlName="country">
-            <option value="">Seleccione un País</option>
+            <option [value]="null">Seleccione un País</option>
+            <option [value]="item.name" *ngFor="let item of countries">{{item.name}}</option>
           </select>
         </div>
       </div>
@@ -27,7 +28,8 @@
         <div class="form-group">
           <label>Estado</label>
           <select class="form-control" formControlName="state">
-            <option value="">Selecione un Estado</option>
+            <option [value]="null">Seleccione un Estado</option>
+            <option [value]="item.name" *ngFor="let item of states">{{item.name}}</option>
           </select>
         </div>
       </div>
