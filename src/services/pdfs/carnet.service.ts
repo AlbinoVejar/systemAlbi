@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import autoTable, { RowInput, ColumnInput } from 'jspdf-autotable';
+import { Student } from 'src/models/student';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class CarnetService {
 
   constructor() { }
 
-  createCarnet() {
+  createCarnet(student: Student) {
     const doc = new jsPDF({
       orientation: 'l',
       unit: 'mm',
