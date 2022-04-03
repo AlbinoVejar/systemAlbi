@@ -39,9 +39,9 @@ export class ConstanciaService {
     y += 6;
     doc.setFontSize(14);
     doc.setFont("helvetica", "normal");
-    doc.text(`Grado a cursar: ${String(student.grade).toUpperCase()}`, 120, y);
+    doc.text(`Grado a cursar:`, 120, y);
     doc.setTextColor("blue");
-    doc.text("1ERO", 155, y)
+    doc.text(`${String(student.grade).toUpperCase()}`, 155, y)
     y += 6;
     doc.setTextColor("black"); "./../assets/logo.png";
     doc.text("Ciclo Escolar: ", 120, y);
