@@ -19,22 +19,26 @@ export class CarnetService {
     const height = doc.internal.pageSize.getHeight(); //215.9
     const width = doc.internal.pageSize.getWidth(); //279.4 
     let y = 10;
-    y = this.addCarnet(student, doc, y);
+    let img = new Image();
+    img.src = "assets/img/brand/logo.jpg"
+    img.crossOrigin = "anonymous";
+    y = this.addCarnet(student, doc, y, img);
     y += 30;
-    this.addCarnet(student, doc, y);
+    this.addCarnet(student, doc, y, img);
 
     doc.addPage('letter','p');
 
     y = 30;
-    y = this.addSchedule(student, doc, y);
+    y = this.addSchedule(student, doc, y, img);
     y += 60;
-    this.addSchedule(student, doc, y);
+    this.addSchedule(student, doc, y, img);
 
     doc.save("example-carnet.pdf");
   }
 
-  addCarnet(student: Student, doc: jsPDF, y: number){
+  addCarnet(student: Student, doc: jsPDF, y: number, img: any){
     const initY = y;
+    doc.addImage(img,'jpg', 20, y, 100, 25); 
     doc.setDrawColor("black");
     doc.setTextColor("black");
     doc.setFontSize(8)
@@ -127,16 +131,20 @@ export class CarnetService {
     return y;
   }
 
-  addSchedule(student: Student, doc: jsPDF, y: number){
+  addSchedule(student: Student, doc: jsPDF, y: number, img: any){
+    doc.addImage(img,'jpg', 10, y - 25, 100, 25); 
     doc.setFontSize(8);
     doc.setTextColor("black");
     doc.setDrawColor("black");
     doc.text("N. Alumno:", 40, y);
-    doc.line(55, y + 1, 99, y + 1);
-    doc.text("SECCIÓN:", 100, y);
-    doc.line(115, y +1 , 139, y + 1);
-    doc.text("GRADO:",140, y);
-    doc.line(152, y + 1, 179, y + 1);
+    doc.text(`${String(student.names).toUpperCase()} ${String(student.last_name_first).toUpperCase()} ${String(student.last_name_second).toUpperCase()}`,55, y);
+    doc.line(55, y + 1, 114, y + 1);
+    doc.text("SECCIÓN:", 115, y);
+    doc.text(`${String(student.section).toUpperCase()}`, 129, y);
+    doc.line(129, y +1 , 149, y + 1);
+    doc.text("GRADO:",150, y);
+    doc.text(`${String(student.grade).toUpperCase()}`, 162, y);
+    doc.line(162, y + 1, 179, y + 1);
     doc.text("GRUPO:", 180, y);
     doc.line(192, y + 1, 200, y + 1);
 

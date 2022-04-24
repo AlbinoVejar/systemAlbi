@@ -22,17 +22,10 @@ export class ConstanciaService {
     const height = doc.internal.pageSize.getHeight(); //215.9
     const width = doc.internal.pageSize.getWidth(); //279.4 
     let y = 15;
-    // let img = new Image();
-    // img.src = "../assets/logo.png"
-    // img.crossOrigin = "anonymous";
-    // let result: string;
-    // var canvas = this.input?.elementRef.nativeElement;
-    // var ctx = canvas.getContext("2d");
-    // img.onload = () => {
-    //   ctx?.drawImage(img,512,182);
-    //   return canvas;
-    // }
-    // doc.addImage(canvas.toDataURL('image/png'),'PNG',10, y, 100, 40); 
+    let img = new Image();
+    img.src = "assets/img/brand/logo.jpg"
+    img.crossOrigin = "anonymous";
+    doc.addImage(img,'jpg',20, 5, 80, 30); 
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
     doc.text(`SOLICITUD A: ${String(student.section).toUpperCase()}`, 120, y);
